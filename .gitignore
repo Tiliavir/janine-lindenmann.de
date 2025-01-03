@@ -1,0 +1,6 @@
+.hugo_build.lock
+resources/
+public/
+.prettierrc
+node_modules/
+/hugo_stats.json

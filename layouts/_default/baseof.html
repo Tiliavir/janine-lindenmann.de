@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
+  <title>{{ block "title" . }}{{ cond (eq .Title .Site.Title) .Title (print .Title " | " .Site.Title) }}{{ end }}</title>
+  <base href="{{ .Site.BaseURL }}">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  {{- $description := .Description | default .Summary | default .Site.Params.description | default .Site.Params.tagline }}
+  <meta name="description" content="{{ $description }}">
+  {{ hugo.Generator }}
+  <meta name="robots" content="{{ cond hugo.IsProduction "index, follow" "noindex, nofollow"}}">
+
+  {{ partialCached "site/styles.html" . }}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ print "favicon/apple-touch-icon.png" | absURL}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ print "favicon/favicon-32x32.png" | absURL}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ print "favicon/favicon-16x16.png" | absURL}}">
+  <link rel="manifest" href="{{ print "favicon/site.webmanifest" | absURL}}">
+  <link rel="mask-icon" href="{{ print "favicon/safari-pinned-tab.svg" | absURL}}" color="{{ .Site.Params.style.color_primary }}">
+  <link rel="shortcut icon" href="{{ print "favicon/favicon.ico" | absURL}}">
+  <meta name="msapplication-TileColor" content="{{ .Site.Params.style.color_primary }}">
+  <meta name="msapplication-config" content="none">
+  <meta name="theme-color" content="{{ .Site.Params.style.color_primary }}">
+
+  {{- with (.Params.keywords | default .Params.tags | default .Site.Params.keywords) }}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
+  {{- with .Params.authors }}<meta name="author" content="{{ delimit . ", " }}">{{- end }}
+  <meta name="og:title" content="{{ .Title | default .Site.Title }}">
+  <meta name="og:description" content="{{ $description }}">
+  <meta name="og:type" content="{{ cond .IsHome "website" "article" }}">
+  <meta name="og:site_name" content="{{ .Site.Title }}">
+  <meta name="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {{- $image := .Params.feature }}
+  {{- if $image }}
+    {{- $image = .Resources.GetMatch $image }}
+  {{- else }}
+    {{- $image = site.Params.meta.baseOGImage }}
+    {{- $image = resources.GetMatch $image }}
+  {{- end }}
+  {{- $image = $image.Fit "1200x630" }}
+  {{- $imageTweet := $image.Fit "1024x512" }}
+  <meta name="og:image" content="{{ $image.Permalink }}">
+  <meta name="twitter:image" content="{{ $imageTweet.Permalink }}">
+  {{ with .Site.Params.Twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Janine Lindenmann | Freie Rednerin (IHK)",
+      "url": "https://www.janine-lindenmann.de",
+      "description": "Janine Lindenmann ist freie Rednerin (IHK) für Hochzeiten, freie Trauungen und Kinderwillkommensfeste in Südbaden und der Schweiz.",
+      "sameAs": [
+        "https://maps.app.goo.gl/tHoZevULsWsQHbjX6",
+        "https://www.instagram.com/freie_rednerin_janine",
+        "https://wa.me/4915679604716",
+        "https://www.linkedin.com/in/janinelindenmann"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Zielrebenweg 8",
+        "addressLocality": "Kandern",
+        "postalCode": "79400",
+        "addressCountry": "DE"
+      },
+      "telephone": "+49 1567 9604 716",
+      "email": "kontakt@janine-lindenmann.de",
+      "image": "https://www.janine-lindenmann.de/img/icons/brand.svg",
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Offenburg"
+        },
+        {
+          "@type": "Place",
+          "name": "Lahr"
+        },
+        {
+          "@type": "Place",
+          "name": "Emmendingen"
+        },
+        {
+          "@type": "Place",
+          "name": "Freiburg im Breisgau"
+        },
+        {
+          "@type": "Place",
+          "name": "Bad Säckingen"
+        },
+        {
+          "@type": "Place",
+          "name": "Waldshut-Tiengen"
+        },
+        {
+          "@type": "Place",
+          "name": "Basel"
+        },
+        {
+          "@type": "Place",
+          "name": "Bern"
+        },
+        {
+          "@type": "Place",
+          "name": "Luzern"
+        },
+        {
+          "@type": "Place",
+          "name": "Zürich"
+        },
+        {
+          "@type": "GeoCircle",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Zielrebenweg 8",
+            "addressLocality": "Kandern",
+            "addressRegion": "BW",
+            "postalCode": "79400",
+            "addressCountry": "DE"
+          },
+          "geoRadius": "50000"
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Janine Lindenmann",
+        "givenName": "Janine",
+        "familyName":"Lindenmann"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  {{ block "header" . }}
+    {{ partial "site/header.html" . }}
+  {{ end }}
+
+  <main id="site-main" class="site__main l-grid">
+    {{ block "main" . }}{{ end }}
+    {{ block "sidebar-left" . }}{{ end }}
+    {{ block "sidebar-right" . }}{{ end }}
+    {{ block "pagination" . }}{{ end }}
+  </main>
+  
+  {{ block "footer" . }}{{ partial "site/footer.html" . }}{{ end }}
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<footer id="site-footer" class="footer">
+  <img class="footer-brand" src="/img/icons/brand.svg" alt="JL - Freie Rednerin">
+  <nav id="footer-main-nav" class="banner__nav" aria-label="Secondary navigation">
+    <ul>
+      {{- $currentURL := .RelPermalink }}
+      {{- range .Site.Menus.main }}
+        {{- if not .HasChildren }}
+          {{- $active := eq $currentURL .URL }}
+          <li{{ if $active }} aria-current="page"{{ end }}>
+            <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+          </li>
+        {{- else }}
+          {{- range .Children }}
+            {{- $active := eq $currentURL .URL }}
+            <li{{ if $active }} aria-current="page"{{ end }}>
+              <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+            </li>
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    </ul>
+  </nav>
+  <p class="social-media">
+    <a href="https://instagram.com/freie_rednerin_janine" target="_blank">
+      <img src="/img/icons/instagram.svg" alt="Instagram">
+    </a>
+    <a href="mailto:kontakt@janine-lindenmann.de" target="_blank">
+      <img src="/img/icons/email.svg" alt="eMail">
+    </a>
+    <a href="https://maps.app.goo.gl/tHoZevULsWsQHbjX6" target="_blank">
+      <img src="/img/icons/location.svg" alt="Google Maps">
+    </a>
+    <a href="tel:+4915679604716" target="_blank">
+      <img src="/img/icons/phone.svg" alt="Telefon">
+    </a>
+    <a href="https://wa.me/4915679604716" target="_blank">
+      <img src="/img/icons/whatsapp.svg" alt="WhatsApp">
+    </a>
+  </p>
+  <hr>
+  <nav id="footer-nav" class="banner__nav" aria-label="Secondary navigation">
+    <ul>
+      {{- $currentURL := .RelPermalink }}
+      {{- range .Site.Menus.footer }}
+        {{- $active := and (eq $currentURL .URL) }}
+        <li{{ if $active }} aria-current="page"{{ end }}>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{- end }}
+    </ul>
+  </nav>
+</footer>
+{{ $js := resources.Match "js/*.js" | resources.Concat "scripts/bundle.js" | resources.Minify }}
+<script>{{ $js.Content | safeJS }}</script>

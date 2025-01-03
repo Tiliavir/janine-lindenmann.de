@@ -1,0 +1,25 @@
+.card__content ul {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    padding-left: 2rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: 0;
+      width: 0.65rem;
+      height: 0.65rem;
+
+      background-color: var(--color-primary);
+
+      mask-image: url('/img/icons/heart.svg');
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
+    }
+  }
+}
