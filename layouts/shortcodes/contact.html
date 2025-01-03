@@ -1,0 +1,103 @@
+<div class="form-outer">
+    <h1>Kontaktiert mich</h1>
+    {{ with .Inner }}<p>{{ . }}</p>{{ end }}
+    <form id="contactForm" class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" class="accent" required>
+
+        <label for="phone">Telefonnummer</label>
+        <input type="tel" id="phone" name="phone" placeholder="Telefonnummer" class="accent">
+
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="E-Mail" class="accent" required>
+
+        <label for="ceremony">Art der Zeremonie</label>
+        <select id="ceremony" name="ceremony" class="accent" required>
+            <option value="" disabled selected hidden>Art der Zeremonie</option>
+            <option value="freie-trauung">Freie Trauung</option>
+            <option value="kinderwillkommensfest">Kinderwillkommensfest</option>
+        </select>
+
+        <label for="date">Datum</label>
+        <input type="date" id="date" name="date" class="accent">
+
+        <label for="location">Ort</label>
+        <input type="text" id="location" name="location" placeholder="Ort" class="accent">
+
+        <label for="message">Deine Nachricht an mich</label>
+        <textarea id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
+
+        <label for="msg">Deine Nachricht an mich</label>
+        <input id="msg" type="text" name="website" style="display:none">
+
+        <button type="submit" class="accent">Absenden</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById("contactForm") == null) {
+            return;
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            let responseBox = form.querySelector('.message-box');
+            if (!responseBox) {
+                responseBox = document.createElement('div');
+                responseBox.classList.add('message-box');
+                form.appendChild(responseBox);
+            }
+
+            responseBox.style.display = 'none';
+            responseBox.className = 'message-box';
+            responseBox.innerText = '';
+
+            try {
+                const res = await fetch('/contact.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    responseBox.className = 'message-box success';
+                    responseBox.innerText = data.message;
+                    form.reset();
+                } else {
+                    responseBox.className = 'message-box error';
+                    responseBox.innerText = data.errors ? data.errors.join('\n') : data.message;
+                }
+            } catch (err) {
+                responseBox.className = 'message-box error';
+                responseBox.innerText = 'Verbindungsfehler – bitte erneut versuchen.';
+            } finally {
+                responseBox.style.display = 'block';
+            }
+        });
+
+        // set default date to today
+        const dateField = document.getElementById("date");
+        dateField.setAttribute("value", new Date().toISOString().split('T')[0]);
+
+        // add and set check field
+        const jsField = document.createElement('input');
+        jsField.type = 'hidden';
+        jsField.name = 'jscheck';
+        jsField.value = '1';
+        document.getElementById('contactForm').appendChild(jsField);
+
+        // CSRF-Token setzen (Double-Submit via Cookie + hidden field)
+        const csrfToken = [...crypto.getRandomValues(new Uint8Array(16))]
+            .map(b => b.toString(16).padStart(2, '0')).join('');
+        document.cookie = 'csrf_token=' + csrfToken + '; SameSite=Strict; path=/';
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrf_token';
+        csrfInput.value = csrfToken;
+        document.getElementById('contactForm').appendChild(csrfInput);
+    });
+</script>

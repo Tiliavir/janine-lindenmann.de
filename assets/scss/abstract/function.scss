@@ -1,0 +1,36 @@
+@use 'sass:math';
+@use 'sass:string';
+
+@function rem($pixels, $context: 16px) {
+  @return #{math.div($pixels, $context)}rem;
+}
+
+@function typeScale($steps, $direction: "up", $units: "rem", $type-scale: 1.1) {
+  $font-size: 1;
+
+  @if $steps != 0 {
+    @for $i from 1 through abs($steps) {
+      @if $direction == "up" {
+        $font-size: $font-size * $type-scale;
+      } @else if $direction == "down" {
+        $font-size: math.div($font-size, $type-scale);
+      } @else {
+        @error "Incorrect scaling direction.";
+      }
+    }
+  }
+
+  @if $units == "px" {
+    $font-size: $font-size * $base-font-size;
+  }
+
+  @if $units == "%" {
+    $font-size: $font-size * 100;
+  }
+
+  @if $steps + 1 < 0 {
+    $font-size: $font-size * -1;
+  }
+
+  @return string.unquote($font-size + $units);
+}

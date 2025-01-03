@@ -1,0 +1,63 @@
+details {
+    margin: 1em 0;
+    border-radius: 6px;
+    border: 0;
+
+    summary {
+        position: relative;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: var(--color-canvas);
+        color: var(--color-primary);
+        list-style: none;
+        padding: 1rem 4rem 1rem 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            margin-left: calc(-50vw - 50vw);
+            background-color: var(--color-canvas);
+            z-index: 0;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2rem;
+
+            background-color: var(--color-primary);
+
+            mask-image: url('/img/icons/heart-spark.svg');
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+        }
+
+        h2 {
+            margin: 0.5rem 0;
+        }
+    }
+
+    &>div {
+        margin-top: 0.5em;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 1s ease, opacity 0.4s ease;
+
+    }
+
+    &[open] > div {
+        max-height: 5000px;
+        opacity: 1;
+        transition: max-height 1s ease, opacity 0.4s ease;
+    }
+}
