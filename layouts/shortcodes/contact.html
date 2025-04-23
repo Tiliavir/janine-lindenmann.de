@@ -3,10 +3,10 @@
     {{ with .Inner }}<p>{{ . }}</p>{{ end }}
     <form id="contactForm" class="contact-form">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name" class="accent" required>
+        <input type="text" id="name" name="name" maxlength="100" placeholder="Name" class="accent" required>
 
         <label for="phone">Telefonnummer</label>
-        <input type="tel" id="phone" name="phone" placeholder="Telefonnummer" class="accent">
+        <input type="tel" id="phone" name="phone" maxlength="50" placeholder="Telefonnummer" class="accent">
 
         <label for="email">E-Mail</label>
         <input type="email" id="email" name="email" placeholder="E-Mail" class="accent" required>
@@ -22,13 +22,13 @@
         <input type="date" id="date" name="date" class="accent">
 
         <label for="location">Ort</label>
-        <input type="text" id="location" name="location" placeholder="Ort" class="accent">
+        <input type="text" id="location"  maxlength="100" name="location" placeholder="Ort" class="accent">
 
         <label for="message">Deine Nachricht an mich</label>
-        <textarea id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
+        <textarea maxlength="2000" id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
 
         <label for="msg">Deine Nachricht an mich</label>
-        <input id="msg" type="text" name="website" style="display:none">
+        <input maxlength="2000" id="msg" type="text" name="website" style="display:none">
 
         <button type="submit" class="accent">Absenden</button>
     </form>

@@ -37,11 +37,18 @@ foreach ($_POST as $key => $val) {
     }
 }
 
+// Sanitize helper
+function clean_text($s, $maxLength = 2000) {
+    return substr(preg_replace('/[\x00-\x1F\x7F]/u', '', strip_tags(trim($s))), 0, $maxLength);
+}
+
+// Validierung
 $errors = [];
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
+
+$name = clean_text($_POST['name'] ?? '', 100);
+$email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
 $ceremony = $_POST['ceremony'] ?? '';
-$message = trim($_POST['message'] ?? '');
+$message = clean_text($_POST['message'] ?? '', 2000);
 
 if ($name === '' || strlen($name) > 100 || preg_match('/[\r\n]/', $name)) {
     $errors[] = 'Name ungültig.';
@@ -52,8 +59,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)
 if (!in_array($ceremony, ['freie-trauung', 'kinderwillkommensfest'])) {
     $errors[] = 'Zeremonienart ungültig.';
 }
-if (strlen($message) < 10 || strlen($message) > 2000) {
-    $errors[] = 'Nachricht zu kurz oder zu lang.';
+if (strlen($message) < 10) {
+    $errors[] = 'Nachricht zu kurz.';
 }
 
 if (!empty($errors)) {
@@ -63,32 +70,45 @@ if (!empty($errors)) {
 }
 
 // Optionale Felder
-$phone = trim($_POST['phone'] ?? '');
-$date = $_POST['date'] ?? '';
-$location = trim($_POST['location'] ?? '');
+$phone = clean_text($_POST['phone'] ?? '', 50);
+$date = clean_text($_POST['date'] ?? '', 30);
+$location = clean_text($_POST['location'] ?? '', 100);
 
-// Mail vorbereiten
+// Mail-Vorbereitung
 $to = 'kontakt@janine-lindenmann.de';
 $subject = 'Neue Kontaktanfrage';
-$body = "Neue Nachricht:\n\n" .
-        "Name: $name\nE-Mail: $email\nTelefon: $phone\nZeremonie: $ceremony\nDatum: $date\nOrt: $location\n\nNachricht:\n$message\n";
 
+$body = "Neue Nachricht:\n\n" .
+        "Name: $name\n" .
+        "E-Mail: $email\n" .
+        "Telefon: $phone\n" .
+        "Zeremonie: $ceremony\n" .
+        "Datum: $date\n" .
+        "Ort: $location\n\n" .
+        "Nachricht:\n$message\n";
+
+// Header mit Injection-Schutz
 $headers = [
     'From' => 'webformular@janine-lindenmann.de',
     'Reply-To' => $email,
     'Content-Type' => 'text/plain; charset=UTF-8'
 ];
 
-$success = mail(
-    $to,
-    $subject,
-    $body,
-    implode("\r\n", array_map(fn($k, $v) => "$k: $v", array_keys($headers), $headers))
-);
+foreach ($headers as $k => $v) {
+    if (preg_match('/[\r\n]/', $v)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Header ungültig.']);
+        exit;
+    }
+}
+
+$headersFormatted = implode("\r\n", array_map(fn($k, $v) => "$k: $v", array_keys($headers), $headers));
+
+// Mail senden
+$success = mail($to, $subject, $body, $headersFormatted);
 
 if ($success) {
     echo json_encode(['success' => true, 'message' => 'Nachricht erfolgreich gesendet.']);
 } else {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Fehler beim Mailversand.']);
+    echo json_encode(['success' => false, 'message' => 'Bitte später erneut versuchen.']);
 }
