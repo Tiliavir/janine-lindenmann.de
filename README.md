@@ -5,12 +5,23 @@ https://www.janine-lindenmann.de
 
 ## Local Development
 
-To serve the page, use:
+You need a working hugo extended installation including dart-sass.
+
+Install all required packages and run the first build to verify everything is working:
+
 ```bash
-  hugo serve --minify -d html -b http://localhost:1313
+npm i
+npm run build
 ```
 
-to build the release version, use:
+To serve the page, use:
+
+```bash
+  hugo serve
+```
+
+To build the release version, use:
+
 ```bash
   hugo build --minify -d html -b https://www.janine-lindenmann.de
 ```
