@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
+  repository-projects: write
 jobs:
   update-deps:
     runs-on: ubuntu-latest

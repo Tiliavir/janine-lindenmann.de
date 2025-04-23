@@ -1,8 +1,8 @@
 {{ $options := dict
-    "targetPath" "css/style.css"
     "transpiler" "dartsass"
-    "vars" site.Params.style
+    "outputStyle" "compressed"
+    "enableSourceMap" false
 }}
-{{ with resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "scss/main.scss" . | toCSS $options | postCSS | minify }}
+{{ with resources.Get "scss/style.scss" | toCSS $options | postCSS | minify }}
   <style>{{.Content | safeCSS }}</style>
 {{ end }}
