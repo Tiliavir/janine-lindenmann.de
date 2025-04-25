@@ -40,7 +40,7 @@ jobs:
           clean: true
           commit-message: Release ${{ env.TAG_NAME }}
       - name: 🎉 Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: web27.alfahosting-server.de
           username: ${{ secrets.ftp_user }}
