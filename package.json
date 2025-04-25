@@ -1,7 +1,7 @@
 {
   "name": "janine-lindenmann.de",
   "license": "MIT",
-  "version": "25.04.23",
+  "version": "25.04.25",
   "description": "Website of Janine Lindenmann",
   "author": "Markus Lindenmann <tiliavir@gmail.com>",
   "repository": {
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "7.0.2",
     "@typescript-eslint/eslint-plugin": "8.31.0",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "10.4.21",
     "eslint": "9.25.1",
     "glob-all": "3.3.1",
     "postcss": "8.5.3",

@@ -31,7 +31,7 @@
   {{- with .Params.authors }}<meta name="author" content="{{ delimit . ", " }}">{{- end }}
   <meta name="og:title" content="{{ .Title | default .Site.Title }}">
   <meta name="og:description" content="{{ $description }}">
-  <meta name="og:type" content="{{ cond .IsHome "website" "article" }}">
+  <meta name="og:type" content="website">
   <meta name="og:site_name" content="{{ .Site.Title }}">
   <meta name="og:url" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
