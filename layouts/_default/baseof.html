@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <base href="{{ .Site.BaseURL }}">
+
   {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
   <title>{{ block "title" . }}{{ cond (eq .Title .Site.Title) .Title (print .Title " | " .Site.Title) }}{{ end }}</title>
-  <base href="{{ .Site.BaseURL }}">
-  <meta name="viewport" content="width=device-width,minimum-scale=1">
   {{- $description := .Description | default .Summary | default .Site.Params.description | default .Site.Params.tagline }}
   <meta name="description" content="{{ $description }}">
   {{ hugo.Generator }}
