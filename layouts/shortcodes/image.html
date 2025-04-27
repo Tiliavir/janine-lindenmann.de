@@ -20,7 +20,9 @@
             type="image/webp" />
     <img src="{{ $medium.RelPermalink }}"
          class="{{ $class }}"
+         width="{{ $img.Width }}"
+         height="{{ $img.Height }}"
          alt="{{ $alt }}"
          loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
-    decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
+         decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
 </picture>
