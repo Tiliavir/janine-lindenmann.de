@@ -32,15 +32,18 @@
      data-small-images='{{ jsonify $smallImages }}'
      data-large-images='{{ jsonify $largeImages }}'
      data-interval='{{ $interval }}'
-     style="background-image:url({{ index $smallImages 0 }});">
+     style="background-image:url({{ index $mediumImages 0 }});">
 
-    <img src="{{ index $smallImages 0 }}"
-         srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
-         sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
-         class="image"
-         alt="Image Slider"
-         loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
-         decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
+    <picture>
+        <source srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
+                sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
+                type="image/webp" />
+        <img src="{{ index $mediumImages 0 }}"
+             class="image"
+             alt="Image Slider"
+             loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
+        decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
+    </picture>
 </div>
 
 <script>
@@ -58,13 +61,15 @@
                 index = (index + 1) % images.length;
                 slider.style.backgroundImage = `url(${images[index]})`;
 
-                const img = slider.querySelector('img');
-                if (img) {
+                const picture = slider.querySelector('picture');
+                const source = picture.querySelector('source');
+                const img = picture.querySelector('img');
+
+                if (source && img) {
                     img.classList.add('fade-out');
                     setTimeout(() => {
-                        img.src = images[index];
-                        img.srcset = `${smallImages[index]} 600w, ${images[index]} 1200w, ${largeImages[index]} 2000w`;
-                        img.sizes = "(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
+                        source.setAttribute('srcset', `${smallImages[index]} 600w, ${images[index]} 1200w, ${largeImages[index]} 2000w`);
+                        img.setAttribute('src', smallImages[index]);
                     }, 100);
 
                     img.onload = () => {

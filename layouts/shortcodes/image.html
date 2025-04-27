@@ -14,10 +14,13 @@
 {{- $medium := $img.Resize "1200x webp q85 lanczos" | fingerprint -}}
 {{- $original := $img | fingerprint -}}
 
-<img src="{{ $small.RelPermalink }}"
-     srcset="{{ $small.RelPermalink }} 600w, {{ $medium.RelPermalink }} 1200w, {{ $original.RelPermalink }} {{ $img.Width }}w"
-     sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, {{ $img.Width }}px"
-     class="{{ $class }}"
-     alt="{{ $alt }}"
-     loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
-     decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
+<picture>
+    <source srcset="{{ $small.RelPermalink }} 600w, {{ $medium.RelPermalink }} 1200w, {{ $original.RelPermalink }} {{ $img.Width }}w"
+            sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, {{ $img.Width }}px"
+            type="image/webp" />
+    <img src="{{ $medium.RelPermalink }}"
+         class="{{ $class }}"
+         alt="{{ $alt }}"
+         loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
+    decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
+</picture>
