@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  {{- with .Page.Scratch.Get "preloadImages" -}}
+  {{- with .Scratch.Get "preloadImages" -}}
     {{- range . }}
       <link rel="preload" as="image" href="{{ . }}" fetchpriority="high">
     {{- end -}}

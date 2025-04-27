@@ -16,7 +16,7 @@
 
 {{- if $isAboveTheFold -}}
     {{- $preloadImages := .Page.Scratch.Get "preloadImages" | default (slice) -}}
-    {{- $preloadImages = $preloadImages | append $medium.RelPermalink | uniq -}}
+    {{- $preloadImages = $preloadImages | append $small.RelPermalink | uniq -}}
     {{- .Page.Scratch.Set "preloadImages" $preloadImages -}}
 {{- end -}}
 
@@ -24,7 +24,7 @@
     <source srcset="{{ $small.RelPermalink }} 600w, {{ $medium.RelPermalink }} 1200w, {{ $original.RelPermalink }} {{ $img.Width }}w"
             sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, {{ $img.Width }}px"
             type="image/webp" />
-    <img src="{{ $medium.RelPermalink }}"
+    <img src="{{ $small.RelPermalink }}"
          class="{{ $class }}"
          width="{{ $img.Width }}"
          height="{{ $img.Height }}"
