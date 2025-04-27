@@ -32,9 +32,9 @@
      data-small-images='{{ jsonify $smallImages }}'
      data-large-images='{{ jsonify $largeImages }}'
      data-interval='{{ $interval }}'
-     style="background-image:url({{ index $mediumImages 0 }});">
+     style="background-image:url({{ index $smallImages 0 }});">
 
-    <img src="{{ index $mediumImages 0 }}"
+    <img src="{{ index $smallImages 0 }}"
          srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
          sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
          class="image"
