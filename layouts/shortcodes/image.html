@@ -1,6 +1,7 @@
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" | default "" -}}
 {{- $class := .Get "class" | default "" -}}
+{{- $isAboveTheFold := .Get "isAboveTheFold" | default false -}}
 
 {{- $img := "" -}}
 {{- if .Page.Resources.GetMatch $src -}}
@@ -18,5 +19,5 @@
      sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, {{ $img.Width }}px"
      class="{{ $class }}"
      alt="{{ $alt }}"
-     loading="lazy"
-     decoding="async" />
+     loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
+     decoding="{{ cond $isAboveTheFold "sync" "async" }}" />

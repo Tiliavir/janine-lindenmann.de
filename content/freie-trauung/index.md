@@ -5,7 +5,7 @@ description: Gestaltet eure Zeremonie nach euren Wünschen – romantisch, moder
 keywords: [ "freie Trauung", "Freie Rednerin", "Traurednerin", "Hochzeit", "Schwarzwald", "Hochrhein", "Deutschschweiz", "Kaiserstuhl", "Freiburg", "individuelle Zeremonie", "romantische Trauung", "moderne Hochzeit", "emotional", "mit Herz", "Symbolische Handlung", "Traurede", "freies Sprechen", "Authentizität", "Nachhaltigkeit", "Gewissenhaftigkeit", "Klarheit"]
 ---
 
-{{< image-slider classes="wide-image" images="wedding-1.webp,wedding-2.webp,wedding-3.webp,wedding-4.webp" >}}
+{{< image-slider classes="wide-image" isAboveTheFold=true images="wedding-1.webp,wedding-2.webp,wedding-3.webp,wedding-4.webp" >}}
 
 # Freie Trauung
 

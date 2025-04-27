@@ -1,6 +1,7 @@
 {{- $images := .Get "images" -}}
 {{- $interval := .Get "interval" | default "7000" -}}
 {{- $customClasses := .Get "classes" | default "" -}}
+{{- $isAboveTheFold := .Get "isAboveTheFold" | default false -}}
 
 {{- $imageList := split $images "," -}}
 
@@ -37,9 +38,9 @@
          srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
          sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
          class="image"
-         alt=""
-         loading="lazy"
-         decoding="async"/>
+         alt="Image Slider"
+         loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
+         decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
 </div>
 
 <script>

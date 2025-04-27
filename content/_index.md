@@ -4,7 +4,7 @@ hideTitle: true
 description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die nachhaltig im Herzen wirken.
 ---
 
-{{< image src="start.webp" class="wide-image" alt="Janine Lindenmann" >}}
+{{< image src="start.webp" isAboveTheFold=true class="wide-image" alt="Janine Lindenmann" >}}
 
 <div class="center">
   <h1>Euer Moment - meine Worte</h1>
