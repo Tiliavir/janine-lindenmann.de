@@ -30,6 +30,12 @@
     {{- $mediumImageElements = $mediumImageElements | append $medium -}}
 {{- end -}}
 
+{{- if $isAboveTheFold -}}
+    {{- $preloadImages := .Page.Scratch.Get "preloadImages" | default (slice) -}}
+    {{- $preloadImages = $preloadImages | append (index $mediumImageElements 0).RelPermalink | uniq -}}
+    {{- .Page.Scratch.Set "preloadImages" $preloadImages -}}
+{{- end -}}
+
 <div class="image-fade-slider {{ $customClasses }}"
      data-images='{{ jsonify $mediumImages }}'
      data-small-images='{{ jsonify $smallImages }}'

@@ -54,5 +54,5 @@ erfolgreich abgeschlossen habe.
 
 Freie Rednerin (IHK)
 
-<a href="https://freieredner-ausbildung.com/" target="_blank" style="background-image: none"><img class="badge" alt="Ausgebildet von Freie RednerInnen" src="/img/freie-rednerinnen.webp"></a>
-<img class="badge" alt="IHK Rhein-Neckar" src="/img/ihk-rhein-neckar.webp">
+<a href="https://freieredner-ausbildung.com/" target="_blank" style="background-image: none"><img class="badge" alt="Ausgebildet von Freie RednerInnen" src="/about-me/freie-rednerinnen.webp"></a>
+<img class="badge" alt="IHK Rhein-Neckar" src="/about-me/ihk-rhein-neckar.webp">
