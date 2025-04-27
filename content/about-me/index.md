@@ -5,7 +5,7 @@ description: Entdecke Janine Lindenmann, Traurednerin für Hochzeiten und Abschi
 keywords: [ "Über mich", "Janine Lindenmann", "persönlich", "Katzen", "Reisen", "Puzzeln", "Energie", "Sprechen", "Reden", "Mein Weg", "Freie Rednerin", "Personal- und Organisationsentwicklung", "Arbeits- und Organisationspsychologie", "Pflanzen", "Musik", "Saxophon", "Oboe" ]
 ---
 
-{{< image-slider classes="full-image" images="/img/about-me-1.webp,/img/about-me-2.webp,/img/about-me-3.webp" >}}
+{{< image-slider classes="full-image" images="about-me-1.webp,about-me-2.webp,about-me-3.webp" >}}
 
 ## Persönliche Einblicke
 

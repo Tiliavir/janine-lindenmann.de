@@ -1,15 +1,45 @@
-{{ $images := .Get "images" }}
-{{ $interval := .Get "interval" | default "7000" }}
-{{ $customClasses := .Get "classes" | default "" }}
+{{- $images := .Get "images" -}}
+{{- $interval := .Get "interval" | default "7000" -}}
+{{- $customClasses := .Get "classes" | default "" -}}
 
-{{ $imageList := split $images "," }}
-{{ $firstImage := index $imageList 0 }}
+{{- $imageList := split $images "," -}}
+
+{{- $page := .Page -}}
+{{- $smallImages := slice -}}
+{{- $mediumImages := slice -}}
+{{- $largeImages := slice -}}
+
+{{- range $imageList }}
+    {{- $img := "" -}}
+    {{- if $page.Resources.GetMatch . -}}
+        {{- $img = $page.Resources.GetMatch . -}}
+    {{- else -}}
+        {{- $img = resources.Get . -}}
+    {{- end -}}
+
+    {{- $small := $img.Resize "600x" | fingerprint -}}
+    {{- $medium := $img.Resize "1200x" | fingerprint -}}
+    {{- $original := $img | fingerprint -}}
+
+    {{- $smallImages = $smallImages | append $small.RelPermalink -}}
+    {{- $mediumImages = $mediumImages | append $medium.RelPermalink -}}
+    {{- $largeImages = $largeImages | append $original.RelPermalink -}}
+{{- end -}}
 
 <div class="image-fade-slider {{ $customClasses }}"
-     data-images='{{ jsonify $imageList }}'
+     data-images='{{ jsonify $mediumImages }}'
+     data-small-images='{{ jsonify $smallImages }}'
+     data-large-images='{{ jsonify $largeImages }}'
      data-interval='{{ $interval }}'
-     style="background-image:url({{ $firstImage }});">
-    <img alt="" src="{{ $firstImage }}" class="image" />
+     style="background-image:url({{ index $mediumImages 0 }});">
+
+    <img src="{{ index $mediumImages 0 }}"
+         srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
+         sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
+         class="image"
+         alt=""
+         loading="lazy"
+         decoding="async"/>
 </div>
 
 <script>
@@ -18,6 +48,8 @@
 
         sliders.forEach(slider => {
             const images = JSON.parse(slider.getAttribute('data-images'));
+            const smallImages = JSON.parse(slider.getAttribute('data-small-images'));
+            const largeImages = JSON.parse(slider.getAttribute('data-large-images'));
             const interval = parseInt(slider.getAttribute('data-interval'), 10) || 5000;
             let index = 0;
 
@@ -25,14 +57,19 @@
                 index = (index + 1) % images.length;
                 slider.style.backgroundImage = `url(${images[index]})`;
 
-                slider.children[0].classList.add('fade-out');
-                setTimeout(() => {
-                    slider.children[0].src = `${images[index]}`;
-                }, 100);
+                const img = slider.querySelector('img');
+                if (img) {
+                    img.classList.add('fade-out');
+                    setTimeout(() => {
+                        img.src = images[index];
+                        img.srcset = `${smallImages[index]} 600w, ${images[index]} 1200w, ${largeImages[index]} 2000w`;
+                        img.sizes = "(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
+                    }, 100);
 
-                slider.children[0].onload = () => {
-                    slider.children[0].classList.remove('fade-out');
-                };
+                    img.onload = () => {
+                        img.classList.remove('fade-out');
+                    };
+                }
             }, interval);
         });
     })();

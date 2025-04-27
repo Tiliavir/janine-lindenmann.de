@@ -1,0 +1,22 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+
+{{- $img := "" -}}
+{{- if .Page.Resources.GetMatch $src -}}
+    {{- $img = .Page.Resources.GetMatch $src -}}
+{{- else -}}
+    {{- $img = resources.Get $src -}}
+{{- end -}}
+
+{{- $small := $img.Resize "600x webp q85 lanczos" | fingerprint -}}
+{{- $medium := $img.Resize "1200x webp q85 lanczos" | fingerprint -}}
+{{- $original := $img | fingerprint -}}
+
+<img src="{{ $medium.RelPermalink }}"
+     srcset="{{ $small.RelPermalink }} 600w, {{ $medium.RelPermalink }} 1200w, {{ $original.RelPermalink }} {{ $img.Width }}w"
+     sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, {{ $img.Width }}px"
+     class="{{ $class }}"
+     alt="{{ $alt }}"
+     loading="lazy"
+     decoding="async" />

@@ -1,5 +1,7 @@
 # janine-lindenmann.de
 
+[![Build State](https://github.com/Tiliavir/janine-lindenmann.de/workflows/ci/badge.svg)](https://github.com/Tiliavir/janine-lindenmann.de/actions)
+
 Janines Website für ihre Tätigkeit als Freie Rednerin (IHK):
 https://www.janine-lindenmann.de
 

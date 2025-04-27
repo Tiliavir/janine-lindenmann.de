@@ -5,7 +5,7 @@ description: Gestaltet eure Zeremonie nach euren Wünschen – romantisch, moder
 keywords: [ "alternative Taufe", "freie Taufe", "Kiwi", "Willkommenszeremonie", "Kind", "Baby", "Neugeborenes", "weltlich", "Familienfeier", "Freie Rednerin", "Schwarzwald", "Hochrhein", "Deutschschweiz", "Kaiserstuhl", "Freiburg", "individuelle Zeremonie", "emotional", "mit Herz", "Symbolische Handlung", "freies Sprechen", "Authentizität", "Nachhaltigkeit", "Gewissenhaftigkeit", "Klarheit" ]
 ---
 
-{{< image-slider classes="wide-image" images="/img/welcome-child-1.webp,/img/welcome-child-2.webp,/img/welcome-child-3.webp" >}}
+{{< image-slider classes="wide-image" images="welcome-child-1.webp,welcome-child-2.webp,welcome-child-3.webp" >}}
 
 # Kinderwillkommensfest
 
