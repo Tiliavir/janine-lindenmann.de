@@ -9,7 +9,7 @@
 {{- $smallImages := slice -}}
 {{- $mediumImages := slice -}}
 {{- $largeImages := slice -}}
-{{- $smallImageElements := slice -}}
+{{- $mediumImageElements := slice -}}
 
 {{- range $imageList }}
     {{- $img := "" -}}
@@ -27,14 +27,10 @@
     {{- $mediumImages = $mediumImages | append $medium.RelPermalink -}}
     {{- $largeImages = $largeImages | append $original.RelPermalink -}}
 
-    {{- $smallImageElements = $smallImageElements | append $medium -}}
+    {{- $mediumImageElements = $mediumImageElements | append $medium -}}
 {{- end -}}
 
-{{- if $isAboveTheFold -}}
-    {{- $preloadImages := .Page.Scratch.Get "preloadImages" | default (slice) -}}
-    {{- $preloadImages = $preloadImages | append (index $smallImageElements 0).RelPermalink | uniq -}}
-    {{- .Page.Scratch.Set "preloadImages" $preloadImages -}}
-{{- end -}}
+<link rel="preload" as="image" href="{{ (index $mediumImageElements 0).RelPermalink }}" fetchpriority="high">
 
 <div class="image-fade-slider {{ $customClasses }}"
      data-images='{{ jsonify $mediumImages }}'
@@ -47,11 +43,11 @@
         <source srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
                 sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
                 type="image/webp" />
-        <img src="{{ (index $smallImageElements 0).RelPermalink }}"
+        <img src="{{ (index $mediumImageElements 0).RelPermalink }}"
              class="image"
              alt="Image Slider"
-             width="{{ (index $smallImageElements 0).Width }}"
-             height="{{ (index $smallImageElements 0).Height }}"
+             width="{{ (index $mediumImageElements 0).Width }}"
+             height="{{ (index $mediumImageElements 0).Height }}"
              loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
         decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
     </picture>
