@@ -34,6 +34,7 @@ AddType application/font-woff2 .woff2
 # Gzip
 <ifmodule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript text/json image/svg+xml
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp)$ no-gzip dont-vary
 </ifmodule>
 
 <ifModule mod_gzip.c>
