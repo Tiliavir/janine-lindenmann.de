@@ -30,7 +30,9 @@
     {{- $mediumImageElements = $mediumImageElements | append $medium -}}
 {{- end -}}
 
-<link rel="preload" as="image" href="{{ (index $mediumImageElements 0).RelPermalink }}" fetchpriority="high">
+{{- if $isAboveTheFold -}}
+    <link rel="preload" as="image" href="{{ (index $mediumImageElements 0).RelPermalink }}" fetchpriority="high">
+{{- end -}}
 
 <div class="image-fade-slider {{ $customClasses }}"
      data-images='{{ jsonify $mediumImages }}'

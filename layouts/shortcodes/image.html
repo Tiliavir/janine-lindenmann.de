@@ -14,7 +14,9 @@
 {{- $medium := $img.Resize "1200x webp q85 lanczos" | fingerprint -}}
 {{- $original := $img | fingerprint -}}
 
-<link rel="preload" as="image" href="{{ $medium.RelPermalink }}" fetchpriority="high">
+{{- if $isAboveTheFold -}}
+    <link rel="preload" as="image" href="{{ $medium.RelPermalink }}" fetchpriority="high">
+{{- end -}}
 
 <picture>
     <source srcset="{{ $small.RelPermalink }} 600w, {{ $medium.RelPermalink }} 1200w, {{ $original.RelPermalink }} {{ $img.Width }}w"
