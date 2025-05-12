@@ -22,9 +22,9 @@ disableKinds = ["taxonomy", "term", "RSS"]
     keywords = ["Hochzeit", "Traurednerin", "Rede", "Freie Rednerin", "Südschwarzwald", "konfessionslos", "zweisprachig", "weltlich", "Traurednerin gesucht", "Hochzeitsrednerin", "Freie Trauung", "Willkommensfest", "Feier", "Zeremonie", "Symbolische Handlung", "Ritual"]
 
 [params.brand]
-    logo = "/img/icons/banner-full.svg"
+    logo = "/img/icons/banner-full-250512.svg"
     name = "Janine Lindenmann | Freie Rednerin (IHK)"
-    logoShort = "/img/icons/banner-narrow.svg"
+    logoShort = "/img/icons/banner-narrow-250512.svg"
     nameShort = "Janine Lindenmann"
     tagline = "Euer Moment - meine Worte. Klar. Tiefgründig. Ergreifend."
 
