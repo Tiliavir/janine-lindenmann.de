@@ -1,0 +1,41 @@
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+
+.banner__brand a {
+  view-transition-name: header-logo;
+}
+
+#site-nav {
+  view-transition-name: main-nav;
+}
+
+.card__content h1 {
+  view-transition-name: page-title;
+}
+
+.card__content {
+  view-transition-name: main-content;
+}
+
+.footer-brand {
+  view-transition-name: footer-logo;
+}
+
+#footer-main-nav {
+  view-transition-name: footer-nav-primary;
+}
+
+#footer-nav {
+  view-transition-name: footer-nav-secondary;
+}
+
+html {
+  transition: opacity 0.3s ease-in-out;
+}
