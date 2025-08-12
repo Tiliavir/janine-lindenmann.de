@@ -34,7 +34,7 @@
     pre,
     blockquote {
         border: 1px solid #000;
-        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     thead {
@@ -43,7 +43,7 @@
 
     tr,
     img {
-        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     p,
@@ -55,6 +55,6 @@
 
     h2,
     h3 {
-        page-break-after: avoid;
+        break-after: avoid;
     }
 }
