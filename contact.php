@@ -39,7 +39,7 @@ foreach ($_POST as $key => $val) {
 
 // Sanitize helper
 function clean_text($s, $maxLength = 2000) {
-    return substr(preg_replace('/[\x00-\x1F\x7F]/u', '', strip_tags(trim($s))), 0, $maxLength);
+    return substr(preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/u', '', strip_tags(trim($s))), 0, $maxLength);
 }
 
 // Validierung
@@ -87,7 +87,6 @@ $body = "Neue Nachricht:\n\n" .
         "Ort: $location\n\n" .
         "Nachricht:\n$message\n";
 
-// Header mit Injection-Schutz
 $headers = [
     'From' => 'webformular@janine-lindenmann.de',
     'Reply-To' => $email,
