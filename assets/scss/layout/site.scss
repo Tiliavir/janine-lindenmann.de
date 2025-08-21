@@ -17,5 +17,6 @@ body {
     &__main {;
         flex-grow: 1;
         background-color: transparent;
+        overflow-x: hidden;
     }
 }
