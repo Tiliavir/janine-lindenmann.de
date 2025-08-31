@@ -1,7 +1,7 @@
 @use "../abstract" as tools;
 
 .footer {
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
   font-size: tools.typeScale(1, down, em);
   color: var(--color-text);
   background-color: var(--color-canvas-tint);
