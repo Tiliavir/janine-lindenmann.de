@@ -1,3 +1,5 @@
+@use "../abstract" as *;
+
 body {
     display: flex;
     flex-direction: column;
@@ -18,5 +20,9 @@ body {
         flex-grow: 1;
         background-color: transparent;
         overflow-x: hidden;
+
+        @include break(54rem) {
+            overflow-x: initial;
+        }
     }
 }
