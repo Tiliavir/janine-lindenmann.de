@@ -27,7 +27,7 @@ if (empty($csrf_cookie) || empty($csrf_post) || !hash_equals($csrf_cookie, $csrf
 
 // Whitelist & Validierung
 $fields = [
-    'name', 'phone', 'email', 'ceremony', 'date', 'location', 'message', 'csrf_token', 'jscheck', 'website'
+    'name', 'residence', 'email', 'ceremony', 'date', 'location', 'message', 'csrf_token', 'jscheck', 'website'
 ];
 foreach ($_POST as $key => $val) {
     if (!in_array($key, $fields)) {
@@ -70,7 +70,7 @@ if (!empty($errors)) {
 }
 
 // Optionale Felder
-$phone = clean_text($_POST['phone'] ?? '', 50);
+$residence = clean_text($_POST['residence'] ?? '', 100);
 $date = clean_text($_POST['date'] ?? '', 30);
 $location = clean_text($_POST['location'] ?? '', 100);
 
@@ -81,10 +81,10 @@ $subject = 'Neue Kontaktanfrage';
 $body = "Neue Nachricht:\n\n" .
         "Name: $name\n" .
         "E-Mail: $email\n" .
-        "Telefon: $phone\n" .
+        "Wohnort: $residence\n" .
         "Zeremonie: $ceremony\n" .
         "Datum: $date\n" .
-        "Ort: $location\n\n" .
+        "Ort der Zeremonie: $location\n\n" .
         "Nachricht:\n$message\n";
 
 $headers = [
