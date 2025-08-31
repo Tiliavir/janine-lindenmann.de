@@ -66,13 +66,32 @@
             const interval = parseInt(slider.getAttribute('data-interval'), 10) || 5000;
             let index = 0;
 
+            const picture = slider.querySelector('picture');
+            const source = picture.querySelector('source');
+            const img = picture.querySelector('img');
+
+            let lastSrc = "";
+            let debounceTimer = null;
+            function syncBackground() {
+                if (img.currentSrc !== lastSrc) {
+                    lastSrc = img.currentSrc;
+                    slider.style.backgroundImage = `url(${img.currentSrc})`;
+                    console.log("Background synced to:", img.currentSrc);
+                }
+            }
+
+            img.addEventListener("load", () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(syncBackground, 100);
+            });
+
+            if (img.complete) {
+                // if image is already loaded (from cache), sync immediately
+                syncBackground();
+            }
+
             setInterval(() => {
                 index = (index + 1) % images.length;
-                slider.style.backgroundImage = `url(${images[index]})`;
-
-                const picture = slider.querySelector('picture');
-                const source = picture.querySelector('source');
-                const img = picture.querySelector('img');
 
                 if (source && img) {
                     img.classList.add('fade-out');
