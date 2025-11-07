@@ -4,7 +4,7 @@ hideTitle: true
 description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die nachhaltig im Herzen wirken.
 ---
 
-{{< image-slider classes="wide-image" isAboveTheFold=true images="start.webp" >}}
+{{< image-slider classes="wide-image" isAboveTheFold=true images="banner-1.webp,banner-2.webp" >}}
 
 <div class="center">
   <h1>Euer Moment - meine Worte</h1>
