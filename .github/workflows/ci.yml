@@ -1,10 +1,13 @@
 name: CI
+
 on:
   push:
     branches:
       - '**'
     tags-ignore:
       - '**'
+  pull_request:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,3 +31,11 @@ jobs:
           extended: true
       - name: Build
         run: npm run build
+      - name: Dependabot Auto Merge
+        if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+          gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_MERGER_TOKEN }}
