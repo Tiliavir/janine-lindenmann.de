@@ -113,7 +113,14 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
     </div>
 </div>
 
-{{< contact />}}
+{{< contact >}}
+
+Ich freue mich auf eure Anfrage!
+
+Gerne über nachfolgendes Formular oder einfach <a href="https://wa.me/4915679604716" target="_blank">per WhatsApp (+49
+156 7960 4716)</a>.
+
+{{< /contact >}}
 
 ## Kundenstimmen
 
@@ -122,6 +129,9 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
         <div class="customer-quote"><a href="https://maps.app.goo.gl/coULcGCMJ6Mk5TsF9" target="_blank">&quot;Janines Traurede war witzig, kurzweilig und voller Emotionen.<br>Sie ist eine Rednerin, die Ruhe und Souveränität ausstrahlt.&quot; – Anna Gasteier</a></div>
         <div class="customer-quote"><a href="https://maps.app.goo.gl/mX5aHDeK2XGHdLKs7" target="_blank">&quot;Ich fühlte in jeder Sekunde die Leidenschaft, mit der Janine diesen feierlichen Anlass durchgeführt hat. Ihre Rede hat nicht nur das Brautpaar, sondern auch uns Gäste zutiefst berührt und inspiriert.&quot; – Lisa Doms</a></div>
         <div class="customer-quote">&quot;Janine überzeugt als Rednerin, die mit Klarheit und tiefem Verständnis Menschen erfasst und sie in ihren Zeremonien in den Mittelpunkt stellt.&quot; - Martin Lieske, Tobias Broek</div>
+        <div class="customer-quote"><a href="https://maps.app.goo.gl/kXzSqU54Jot42jWZ7" target="_blank">&quot;Nicht nur wir, sondern auch unsere Gäste waren begeistert von Janines Rede und ihrer Art. Wir empfehlen sie von Herzen weiter [...]&quot; - Gina und Patrick</a></div>
+        <div class="customer-quote"><a href="https://maps.app.goo.gl/cHAnLf78EvfNBPdf8" target="_blank">&quot;Die Trauung hat sowohl uns als auch unseren Gästen außerordentlich gut gefallen. Wir haben uns als Paar jederzeit gut aufgehoben gefühlt.&quot; - Jenny und Jan</a></div>
+        <div class="customer-quote"><a href="https://maps.app.goo.gl/whhRFxvFM8443HHv9" target="_blank">&quot;Ihre Reden sind geprägt von einer Lebendigkeit und Emotionalität, die tief berührt, zum Lachen bringt und Gänsehautmomente schafft.&quot; - Alina Reinhard</a></div>
     </div>
 </div>
 

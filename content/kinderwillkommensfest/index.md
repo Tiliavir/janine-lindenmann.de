@@ -74,7 +74,7 @@ Transparenz und Klarheit sind mir wichtig, weshalb ich mich dazu entschieden hab
 
 <div class="highlight">
     <p>Kosten für euer Kinderwillkommensfest 2025 / 2026:</p>
-    <p>650€ inkl. 50km Fahrtkosten (ab 50km: 0.60€ pro km)</p>
+    <p>650€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
 </div>
 
 Für zweisprachige Zeremonien, einer Entfernung von mehr als 130 km oder bei besonderen Wünschen behalte ich mir vor,

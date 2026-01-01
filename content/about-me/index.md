@@ -43,8 +43,7 @@ Reaktionen erhalten. Dies hat mich unglaublich gestärkt, sodass ich mich nach r
 final dazu entschieden habe den Weg in die nebenberufliche Selbstständigkeit einzuschlagen.
 
 Durch meinen bisherigen Werdegang hätte ich sicherlich auch ohne formale Ausbildung als Freie Rednerin erfolgreich
-durchstarten können. Hauptberuflich widme ich mich als angehende Arbeits- und Organisationspsychologin der Personal- und
-Organisationsentwicklung. Dennoch habe ich mich aufgrund
+durchstarten können. Dennoch habe ich mich aufgrund
 meiner ausgeprägten Gewissenhaftigkeit dazu entschieden, eine fundierte Ausbildung
 bei <a href="https://freieredner-ausbildung.com/" target="_blank">Freie Redner</a> zu absolvieren, die ich im April 2025
 erfolgreich abgeschlossen habe.

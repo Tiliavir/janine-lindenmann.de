@@ -60,7 +60,8 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 - Ein unverbindliches und kostenfreies Gespräch zum Kennenlernen präferiert bei mir Zuhause in 79400 Kandern-Wollbach.
   Falls es die Distanz nicht zulässt auch gerne digital
 - Ein intensives Zweitgespräch, um die Details eurer Trauung zu besprechen und um euch noch besser kennenzulernen
-- Ein PDF mit vielen Ideen für eure Planung
+- Ein persönlicher Fragebogen als Ergänzung zum Zweitgespräch
+- Ein Wedding Guide mit vielen Ideen für eure Planung
 - Eine zuverlässige Ansprechperson vom Tag der Buchung bis zu eurem großen Tag
 - Eigenes Equipment
 - Eine individuelle, frei gesprochene Rede über euch
@@ -69,8 +70,8 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 Transparenz und Klarheit sind mir wichtig, weshalb ich mich dazu entschieden habe meine Preise öffentlich zu machen.
 
 <div class="highlight">
-  <p>Kosten für eure Freie Trauung 2025 / 2026:</p>
-  <p>1100€ inkl. 50km Fahrtkosten (ab 50km: 0.60€ pro km)</p>
+  <p>Kosten für eure Freie Trauung 2025 / 2026:<br/>1100€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
+  <p>Kosten für eure Freie Trauung ab 2027:<br/>1560€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
 </div>
 
 Für zweisprachige Trauungen, einer Entfernung von mehr als 130 km oder bei besonderen Wünschen behalte ich mir vor,
