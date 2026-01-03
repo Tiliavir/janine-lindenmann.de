@@ -71,7 +71,6 @@ Transparenz und Klarheit sind mir wichtig, weshalb ich mich dazu entschieden hab
 
 <div class="highlight">
   <p>Kosten für eure Freie Trauung 2025 / 2026:<br/>1100€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
-  <p>Kosten für eure Freie Trauung ab 2027:<br/>1560€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
 </div>
 
 Für zweisprachige Trauungen, einer Entfernung von mehr als 130 km oder bei besonderen Wünschen behalte ich mir vor,
