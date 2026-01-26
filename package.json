@@ -15,7 +15,7 @@
     "ie 11"
   ],
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "7.0.2",
+    "@fullhuman/postcss-purgecss": "8.0.0",
     "@typescript-eslint/eslint-plugin": "8.53.1",
     "autoprefixer": "10.4.23",
     "eslint": "9.39.2",
