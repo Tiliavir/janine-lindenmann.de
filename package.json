@@ -24,7 +24,7 @@
     "postcss-cli": "11.0.1",
     "prettier": "3.8.1",
     "prettier-plugin-go-template": "0.0.15",
-    "stylelint": "17.0.0",
+    "stylelint": "17.1.0",
     "stylelint-config-recommended-scss": "17.0.0",
     "vnu-jar": "26.1.11"
   },
