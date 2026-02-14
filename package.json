@@ -31,7 +31,7 @@
   "scripts": {
     "lint": "stylelint 'assets/scss/**/*.scss' && npx eslint .",
     "build": "hugo build --minify -b https://www.janine-lindenmann.de && node purgecss.mjs public/",
-    "postbuild": "npx vnu --skip-non-html --also-check-css --also-check-svg public",
+    "postbuild": "npx vnu --skip-non-html --also-check-css --also-check-svg --filterpattern '.*view-transition.*|.*CSS: Parse Error.*' public && echo \"\\033[33m[WARN] Validation is skipping some rules - check if still required, or if view-transitions are finally stable.\\033[0m\"",
     "postinstall": "npm run lint"
   }
 }
