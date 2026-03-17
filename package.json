@@ -16,7 +16,7 @@
   ],
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "8.0.0",
-    "@typescript-eslint/eslint-plugin": "8.57.0",
+    "@typescript-eslint/eslint-plugin": "8.57.1",
     "autoprefixer": "10.4.27",
     "eslint": "10.0.3",
     "glob-all": "3.3.1",
