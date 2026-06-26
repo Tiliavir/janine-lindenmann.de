@@ -59,8 +59,7 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 
 {{< collapsible title="Mein Angebot" >}}
 
-- Ein unverbindliches und kostenfreies Gespräch zum Kennenlernen präferiert bei mir Zuhause in 79400 Kandern-Wollbach.
-  Falls es die Umstände nicht zulassen auch gerne digital
+- Ein unverbindliches und kostenfreies Gespräch zum Kennenlernen
 - Beratung zur Gestaltung eures Kinderwillkommensfestes
 - Ein intensives Zweitgespräch, um die Details der Zeremonie zu besprechen und um euch und euer Kind noch besser
   kennenzulernen
