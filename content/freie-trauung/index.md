@@ -38,7 +38,7 @@ zu tragen und passe mich gerne eurem Farbkonzept an.
 {{< /collapsible >}}
 
 {{< collapsible title="Möglicher Ablauf" >}}
-Hier seht ihr einen möglichen Ablauf eurer freier Trauung im Umfang von 30-45 Minuten. Gerne erläutere ich euch die
+Hier seht ihr einen möglichen Ablauf eurer freier Trauung von ca. 45 Minuten. Gerne erläutere ich euch die
 einzelnen Elemente in einem unverbindlichen Kennenlerngespräch.
 Anpassungen und Integration eurer individuellen Wünsche sind selbstverständlich möglich. Die finale Entscheidung für den
 Ablauf liegt bei euch, denn es ist eure Zeremonie:
