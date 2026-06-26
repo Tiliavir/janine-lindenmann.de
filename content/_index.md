@@ -132,6 +132,8 @@ Gerne über nachfolgendes Formular oder einfach <a href="https://wa.me/491567960
         <div class="customer-quote"><a href="https://maps.app.goo.gl/kXzSqU54Jot42jWZ7" target="_blank">&quot;Nicht nur wir, sondern auch unsere Gäste waren begeistert von Janines Rede und ihrer Art. Wir empfehlen sie von Herzen weiter [...]&quot; - Gina und Patrick</a></div>
         <div class="customer-quote"><a href="https://maps.app.goo.gl/cHAnLf78EvfNBPdf8" target="_blank">&quot;Die Trauung hat sowohl uns als auch unseren Gästen außerordentlich gut gefallen. Wir haben uns als Paar jederzeit gut aufgehoben gefühlt.&quot; - Jenny und Jan</a></div>
         <div class="customer-quote"><a href="https://maps.app.goo.gl/whhRFxvFM8443HHv9" target="_blank">&quot;Ihre Reden sind geprägt von einer Lebendigkeit und Emotionalität, die tief berührt, zum Lachen bringt und Gänsehautmomente schafft.&quot; - Alina Reinhard</a></div>
+        <div class="customer-quote">&quot;Wir können immer noch nicht in Worte fassen, wie schön deine Trauung war. Auch jeder Gast war absolut begeistert. Du hast alle zum weinen, aber auch zum lachen gebracht. Daher noch einmal ein riesen großer Dank an dich!&quot; - Franziska &amp; David</div>
+        <div class="customer-quote">&quot;Es fühlte sich an, als würde sie unsere Familie schon seit Jahren kennen. Sie hat unsere Geschichte so persönlich, liebevoll und authentisch erzählt, dass viele emotionale Momente entstanden sind.&quot; - Familie K.</div>
     </div>
 </div>
 
