@@ -67,12 +67,5 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 - Eine individuelle, frei gesprochene Rede über euch
 - Leitung der Zeremonie vom Einzug bis zum Auszug
 
-Transparenz und Klarheit sind mir wichtig, weshalb ich mich dazu entschieden habe meine Preise öffentlich zu machen.
-
-<div class="highlight">
-  <p>Kosten für eure Freie Trauung 2025 / 2026:<br/>1100€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
-</div>
-
-Für zweisprachige Trauungen, einer Entfernung von mehr als 130 km oder bei besonderen Wünschen behalte ich mir vor,
-zusätzliche Kosten zu berechnen.
+Interesse geweckt? <a href="/kontakt">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
 {{< /collapsible >}}

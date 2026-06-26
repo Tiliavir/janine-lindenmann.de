@@ -70,13 +70,5 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 - Eine individuelle Rede über euch als Familie
 - Leitung der Zeremonie von Beginn bis zum Ende.
 
-Transparenz und Klarheit sind mir wichtig, weshalb ich mich dazu entschieden habe meine Preise öffentlich zu machen.
-
-<div class="highlight">
-    <p>Kosten für euer Kinderwillkommensfest 2025 / 2026:</p>
-    <p>650€ inkl. 50km Fahrtkosten (ab 51km: 0.60€ pro km)</p>
-</div>
-
-Für zweisprachige Zeremonien, einer Entfernung von mehr als 130 km oder bei besonderen Wünschen behalte ich mir vor,
-zusätzliche Kosten zu berechnen.
+Interesse geweckt? <a href="/kontakt">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
 {{< /collapsible >}}
