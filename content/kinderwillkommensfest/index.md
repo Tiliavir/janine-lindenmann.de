@@ -10,8 +10,7 @@ keywords: [ "alternative Taufe", "freie Taufe", "Kiwi", "Willkommenszeremonie", 
 # Kinderwillkommensfest
 
 Ein Kinderwillkommensfest ist eine Feier, die zur Begrüßung eines neugeborenen Kindes veranstaltet wird und nach
-individuellen Wünschen gestaltet werden kann. Manchmal wird es auch als freie Taufe bezeichnet, der Begriff passt meines
-Erachtens jedoch nicht, da keine Taufe stattfindet.
+individuellen Wünschen gestaltet werden kann, oftmals als weltliche Alternative zur Taufe.
 Gerne mache ich euch einen Vorschlag zu einem möglichen Ablauf. Die finale
 Entscheidung liegt natürlich immer bei euch, denn ihr als Familie steht an diesem Tag im Mittelpunkt.
 
