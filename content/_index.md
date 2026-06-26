@@ -95,7 +95,7 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
         </div>
         <div class="split-80">
             <h3>Intensives Zweitgespräch</h3>
-            <p>Vier bis acht Wochen vor eurer Zeremonie stehen eure Liebe und eure Persönlichkeit im Fokus. Wir setzen alle
+            <p>Vier bis acht Wochen vor eurer Zeremonie stehen eure Liebe und eure Persönlichkeit als Paar / Familie im Fokus. Wir setzen alle
             Puzzelteile zusammen und planen im Detail eure individuelle Zeremonie.</p>
         </div>
     </div>
