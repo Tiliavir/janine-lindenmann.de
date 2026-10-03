@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <base href="{{ .Site.BaseURL }}">
@@ -13,7 +12,8 @@
   {{- $description := .Description | default .Summary | default .Site.Params.description | default .Site.Params.tagline }}
   <meta name="description" content="{{ $description }}">
   {{ hugo.Generator }}
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="{{ if .Params.noindex }}noindex, follow{{ else }}index, follow{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
 
   {{ partialCached "site/styles.html" . }}
 
@@ -28,12 +28,13 @@
   <meta name="theme-color" content="{{ .Site.Params.style.color_primary }}">
 
   {{- with (.Params.keywords | default .Params.tags | default .Site.Params.keywords) }}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
-  {{- with .Params.authors }}<meta name="author" content="{{ delimit . ", " }}">{{- end }}
-  <meta name="og:title" content="{{ .Title | default .Site.Title }}">
-  <meta name="og:description" content="{{ $description }}">
-  <meta name="og:type" content="website">
-  <meta name="og:site_name" content="{{ .Site.Title }}">
-  <meta name="og:url" content="{{ .Permalink }}">
+  <meta name="author" content="{{ with .Params.authors }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.author }}{{ end }}">
+  <meta property="og:title" content="{{ .Title | default .Site.Title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:url" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
   {{- $image := .Params.feature }}
   {{- if $image }}
@@ -44,7 +45,10 @@
   {{- end }}
   {{- $image = $image.Fit "1200x630" }}
   {{- $imageTweet := $image.Fit "1024x512" }}
-  <meta name="og:image" content="{{ $image.Permalink }}">
+  <meta property="og:image" content="{{ $image.Permalink }}">
+  <meta property="og:image:width" content="{{ $image.Width }}">
+  <meta property="og:image:height" content="{{ $image.Height }}">
+  <meta property="og:image:alt" content="{{ .Site.Params.brand.name }}">
   <meta name="twitter:image" content="{{ $imageTweet.Permalink }}">
   {{ with .Site.Params.Twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 
@@ -52,84 +56,81 @@
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://www.janine-lindenmann.de/#business",
       "name": "Janine Lindenmann | Freie Rednerin (IHK)",
-      "url": "https://www.janine-lindenmann.de",
-      "description": "Janine Lindenmann ist freie Rednerin (IHK) für Hochzeiten, freie Trauungen und Kinderwillkommensfeste in Südbaden und der Schweiz.",
+      "url": "https://www.janine-lindenmann.de/",
+      "description": "Janine Lindenmann ist freie Rednerin (IHK) für freie Trauungen und Kinderwillkommensfeste in Südbaden und der Deutschschweiz.",
+      "slogan": "Euer Moment – meine Worte. Klar. Tiefgründig. Ergreifend.",
+      "inLanguage": "de",
+      "knowsLanguage": ["de", "en"],
       "sameAs": [
         "https://maps.app.goo.gl/tHoZevULsWsQHbjX6",
         "https://www.instagram.com/freie_rednerin_janine",
-        "https://wa.me/4915679604716",
         "https://www.linkedin.com/in/janinelindenmann"
       ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Zielrebenweg 8",
         "addressLocality": "Kandern",
+        "addressRegion": "BW",
         "postalCode": "79400",
         "addressCountry": "DE"
       },
-      "telephone": "+49 1567 9604 716",
+      "telephone": "+4915679604716",
       "email": "kontakt@janine-lindenmann.de",
+      "logo": "https://www.janine-lindenmann.de/favicon/android-chrome-512x512.png",
       "image": "https://www.janine-lindenmann.de/img/icons/brand.svg",
       "areaServed": [
-        {
-          "@type": "Place",
-          "name": "Offenburg"
-        },
-        {
-          "@type": "Place",
-          "name": "Lahr"
-        },
-        {
-          "@type": "Place",
-          "name": "Emmendingen"
-        },
-        {
-          "@type": "Place",
-          "name": "Freiburg im Breisgau"
-        },
-        {
-          "@type": "Place",
-          "name": "Bad Säckingen"
-        },
-        {
-          "@type": "Place",
-          "name": "Waldshut-Tiengen"
-        },
-        {
-          "@type": "Place",
-          "name": "Basel"
-        },
-        {
-          "@type": "Place",
-          "name": "Bern"
-        },
-        {
-          "@type": "Place",
-          "name": "Luzern"
-        },
-        {
-          "@type": "Place",
-          "name": "Zürich"
-        },
+        { "@type": "Place", "name": "Offenburg" },
+        { "@type": "Place", "name": "Lahr" },
+        { "@type": "Place", "name": "Emmendingen" },
+        { "@type": "Place", "name": "Freiburg im Breisgau" },
+        { "@type": "Place", "name": "Bad Säckingen" },
+        { "@type": "Place", "name": "Waldshut-Tiengen" },
+        { "@type": "Place", "name": "Basel" },
+        { "@type": "Place", "name": "Bern" },
+        { "@type": "Place", "name": "Luzern" },
+        { "@type": "Place", "name": "Zürich" },
         {
           "@type": "GeoCircle",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Zielrebenweg 8",
-            "addressLocality": "Kandern",
-            "addressRegion": "BW",
-            "postalCode": "79400",
-            "addressCountry": "DE"
-          },
+          "geoMidpoint": { "@type": "GeoCoordinates", "address": "79400 Kandern, DE" },
           "geoRadius": "50000"
         }
       ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Zeremonien",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Freie Trauung",
+              "url": "https://www.janine-lindenmann.de/freie-trauung/",
+              "description": "Individuelle, frei gesprochene Traurede und Leitung der freien Trauung (ca. 45 Minuten), auf Wunsch zweisprachig Deutsch/Englisch."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Kinderwillkommensfest",
+              "url": "https://www.janine-lindenmann.de/kinderwillkommensfest/",
+              "description": "Weltliche Willkommenszeremonie für ein Kind als Alternative zur Taufe (30–45 Minuten), auf Wunsch zweisprachig Deutsch/Englisch."
+            }
+          }
+        ]
+      },
       "founder": {
         "@type": "Person",
         "name": "Janine Lindenmann",
         "givenName": "Janine",
-        "familyName":"Lindenmann"
+        "familyName": "Lindenmann",
+        "jobTitle": "Freie Rednerin (IHK)",
+        "sameAs": [
+          "https://www.instagram.com/freie_rednerin_janine",
+          "https://www.linkedin.com/in/janinelindenmann"
+        ]
       }
     }
   </script>

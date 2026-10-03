@@ -1,15 +1,16 @@
 <div class="form-outer">
-    <h1>Kontaktiert mich</h1>
+    {{- $level := .Get "headingLevel" | default "2" }}
+    {{ printf "<h%s>Kontaktiert mich</h%s>" $level $level | safeHTML }}
     {{ with .Inner }}<p>{{ . }}</p>{{ end }}
     <form id="contactForm" class="contact-form">
         <label for="name">Eure Namen</label>
-        <input type="text" id="name" name="name" maxlength="100" placeholder="Eure Namen" class="accent" required>
+        <input type="text" id="name" name="name" maxlength="100" placeholder="Eure Namen" class="accent" autocomplete="name" required>
 
         <label for="residence">Wohnort</label>
-        <input type="text" id="residence" maxlength="100" name="residence" placeholder="Wohnort" class="accent">
+        <input type="text" id="residence" maxlength="100" name="residence" placeholder="Wohnort" class="accent" autocomplete="address-level2">
 
         <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="E-Mail" class="accent" required>
+        <input type="email" id="email" name="email" placeholder="E-Mail" class="accent" autocomplete="email" required>
 
         <label for="ceremony">Art der Zeremonie</label>
         <select id="ceremony" name="ceremony" class="accent" required>
@@ -24,11 +25,10 @@
         <label for="location">Ort der Zeremonie</label>
         <input type="text" id="location"  maxlength="100" name="location" placeholder="Ort der Zeremonie" class="accent">
 
-        <label for="message">Deine Nachricht an mich</label>
+        <label for="message">Eure Nachricht an mich</label>
         <textarea maxlength="2000" id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
 
-        <label for="msg">Deine Nachricht an mich</label>
-        <input maxlength="2000" id="msg" type="text" name="website" style="display:none">
+        <input maxlength="2000" id="msg" type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <button type="submit" class="accent">Absenden</button>
     </form>
@@ -48,6 +48,8 @@
             if (!responseBox) {
                 responseBox = document.createElement('div');
                 responseBox.classList.add('message-box');
+                responseBox.setAttribute('role', 'status');
+                responseBox.setAttribute('aria-live', 'polite');
                 form.appendChild(responseBox);
             }
 

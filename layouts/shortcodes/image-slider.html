@@ -2,6 +2,8 @@
 {{- $interval := .Get "interval" | default "7000" -}}
 {{- $customClasses := .Get "classes" | default "" -}}
 {{- $isAboveTheFold := .Get "isAboveTheFold" | default false -}}
+{{- /* alt texts, separated by "|" - one per image, same order as "images" */ -}}
+{{- $alts := split (.Get "alts" | default "") "|" -}}
 
 {{- $imageList := split $images "," -}}
 
@@ -39,6 +41,7 @@
      data-small-images='{{ jsonify $smallImages }}'
      data-large-images='{{ jsonify $largeImages }}'
      data-interval='{{ $interval }}'
+     data-alts='{{ jsonify $alts }}'
      style="background-image:url({{ index $mediumImages 0 }});">
 
     <picture>
@@ -47,7 +50,7 @@
                 type="image/webp" />
         <img src="{{ (index $mediumImageElements 0).RelPermalink }}"
              class="image"
-             alt="Image Slider"
+             alt="{{ with $alts }}{{ index . 0 }}{{ end }}"
              width="{{ (index $mediumImageElements 0).Width }}"
              height="{{ (index $mediumImageElements 0).Height }}"
              loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
@@ -64,6 +67,7 @@
             const smallImages = JSON.parse(slider.getAttribute('data-small-images'));
             const largeImages = JSON.parse(slider.getAttribute('data-large-images'));
             const interval = parseInt(slider.getAttribute('data-interval'), 10) || 5000;
+            const alts = JSON.parse(slider.getAttribute('data-alts') || '[]');
             let index = 0;
 
             const picture = slider.querySelector('picture');
@@ -76,7 +80,6 @@
                 if (img.currentSrc !== lastSrc) {
                     lastSrc = img.currentSrc;
                     slider.style.backgroundImage = `url(${img.currentSrc})`;
-                    console.log("Background synced to:", img.currentSrc);
                 }
             }
 
@@ -90,6 +93,11 @@
                 syncBackground();
             }
 
+            // respect users who asked the OS to reduce motion: show the first image only
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
             setInterval(() => {
                 index = (index + 1) % images.length;
 
@@ -98,6 +106,7 @@
                     setTimeout(() => {
                         source.setAttribute('srcset', `${smallImages[index]} 600w, ${images[index]} 1200w, ${largeImages[index]} 2000w`);
                         img.setAttribute('src', smallImages[index]);
+                        img.setAttribute('alt', alts[index] || '');
                     }, 100);
 
                     img.onload = () => {

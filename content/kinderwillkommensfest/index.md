@@ -1,11 +1,11 @@
 ---
 title: Kinderwillkommensfest
 hideTitle: true
-description: Gestaltet eure Zeremonie nach euren Wünschen – romantisch, modern oder klassisch, aber immer einprägsam und einfühlsam.
+description: Ein Kinderwillkommensfest als weltliche Alternative zur Taufe – individuell gestaltet, liebevoll geleitet und frei gesprochen, auf Wunsch auch zweisprachig.
 keywords: [ "alternative Taufe", "freie Taufe", "Kiwi", "Willkommenszeremonie", "Kind", "Baby", "Neugeborenes", "weltlich", "Familienfeier", "Freie Rednerin", "Schwarzwald", "Hochrhein", "Deutschschweiz", "Kaiserstuhl", "Freiburg", "individuelle Zeremonie", "emotional", "mit Herz", "Symbolische Handlung", "freies Sprechen", "Authentizität", "Nachhaltigkeit", "Gewissenhaftigkeit", "Klarheit" ]
 ---
 
-{{< image-slider classes="wide-image" isAboveTheFold=true images="welcome-child-1.webp,welcome-child-2.webp,welcome-child-3.webp" >}}
+{{< image-slider classes="wide-image" isAboveTheFold=true images="welcome-child-1.webp,welcome-child-2.webp,welcome-child-3.webp" alts="Babyhand hält den Finger eines Erwachsenen|Verzierte Kekse in Form von Babybodys, Sternen und Vögeln|Festlich gedeckter Tisch im Garten mit Wimpelketten und Luftballons" >}}
 
 # Kinderwillkommensfest
 
@@ -27,13 +27,13 @@ ein wunderschönes Fest feiern werden.
 
 Meine Reden spreche ich frei.
 
-Gerne biete ich euch auch zweisprachige Kinderwillkommensfeste an (Deutsch / Englisch).
+Gerne biete ich euch auch zweisprachige Kinderwillkommensfeste an (Deutsch/Englisch).
 
 <div class="highlight">
     <h3>Meine Werte</h3>
     <ul>
       <li>Authentizität: Echtheit und Aufrichtigkeit prägen meine Worte und vermitteln eine unverstellte, persönliche Note, die Nähe schafft.</li>
-      <li>Klarheit: Mit präziser und verständlicher Ausdrucksweise stelle ich sicher, dass jede Botschaft unmissverständlich ankommt und das Wesentliche - nämlich ihr - im Mittelpunkt steht.</li>
+      <li>Klarheit: Mit präziser und verständlicher Ausdrucksweise stelle ich sicher, dass jede Botschaft unmissverständlich ankommt und das Wesentliche – nämlich ihr – im Mittelpunkt steht.</li>
       <li>Nachhaltigkeit: Meine Zeremonien und Worte sind darauf ausgerichtet, nachhaltige Eindrücke zu hinterlassen – Momente, die lange im Herzen nachhallen.</li>
       <li>Gewissenhaftigkeit: Mit viel Liebe zum Detail und einem hohen Verantwortungsbewusstsein bereite ich jede Zeremonie vor, um sie perfekt auf den Moment abzustimmen.</li>
     </ul>
@@ -41,7 +41,7 @@ Gerne biete ich euch auch zweisprachige Kinderwillkommensfeste an (Deutsch / Eng
 {{< /collapsible >}}
 
 {{< collapsible title="Möglicher Ablauf" >}}
-Hier seht ihr einen möglichen Ablauf eines Kinderwillkommensfestes im Umfang von 30-45 Minuten. Gerne erläutere ich euch
+Hier seht ihr einen möglichen Ablauf eines Kinderwillkommensfestes im Umfang von 30–45 Minuten. Gerne erläutere ich euch
 die einzelnen Elemente in einem unverbindlichen Kennenlerngespräch.
 Anpassungen und Integration eurer individuellen Wünsche sind selbstverständlich möglich. Die finale Entscheidung für den
 Ablauf liegt bei euch, denn es ist eure Zeremonie:
@@ -63,10 +63,10 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 - Beratung zur Gestaltung eures Kinderwillkommensfestes
 - Ein intensives Zweitgespräch, um die Details der Zeremonie zu besprechen und um euch und euer Kind noch besser
   kennenzulernen
-- Eine zuverlässige Ansprechperson vom Tag der Buchung bis zum Kinderwillkommensfest.
+- Eine zuverlässige Ansprechperson vom Tag der Buchung bis zum Kinderwillkommensfest
 - Eigenes Equipment
 - Eine individuelle Rede über euch als Familie
-- Leitung der Zeremonie von Beginn bis zum Ende.
+- Leitung der Zeremonie von Beginn bis Ende
 
-Interesse geweckt? <a href="/kontakt">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
+Interesse geweckt? <a href="/kontakt/">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
 {{< /collapsible >}}

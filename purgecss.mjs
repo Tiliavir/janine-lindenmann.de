@@ -26,7 +26,7 @@ const processHTMLFile = async (filepath) => {
     const purgeCSSResult = await new PurgeCSS().purge({
         content: [{ raw: replaceInlineCSS(htmlContent, "<style></style>"), extension: "html" }],
         css: [{ raw: cssContent }],
-        safelist: ['banner__nav--open', 'banner--float', 'message-box', 'success', 'error', 'fade-out']
+        safelist: ['is-active', 'banner__nav--open', 'banner--float', 'message-box', 'success', 'error', 'fade-out']
     });
 
     const cleanedCSS = purgeCSSResult[0].css;

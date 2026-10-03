@@ -76,7 +76,7 @@
           text-align: center;
         }
 
-        &[aria-current="page"] {
+        &.is-active {
           @media screen and (min-width: calc(50rem + 1px)) {
             border-bottom: 0;
           }

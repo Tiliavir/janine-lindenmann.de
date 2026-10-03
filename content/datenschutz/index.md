@@ -1,12 +1,12 @@
 ---
 title: Datenschutz
-description: Das Impressum der Webseite des Musikvereins Wollbach.
-keywords: ["Impressum", "Kontakt", "Übersicht", "Webseiteninformationen", "Informationen zur Webseite", "Rechtliches", "Haftung", "Haftungsausschluss", "Datenschutz"]
+description: Datenschutzerklärung von janine-lindenmann.de – welche personenbezogenen Daten erhoben werden und welche Rechte Sie haben.
+keywords: ["Datenschutz", "Datenschutzerklärung", "DSGVO", "Kontaktformular", "Betroffenenrechte"]
 ---
 
 Ich nehme den Schutz Ihrer persönlichen Daten sehr
 ernst. Ich behandele Ihre personenbezogenen Daten vertraulich und
-entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
+entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser
 Datenschutzerklärung.
 
 Die Nutzung dieser Webseite ist in der Regel ohne Angabe personenbezogener
@@ -15,12 +15,12 @@ Daten möglich. Soweit auf dieser Seite personenbezogene Daten
 erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten
 werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
 
-Ich weise darauf hin, dass die Datenübertragung im Internet (z.B. bei der
+Ich weise darauf hin, dass die Datenübertragung im Internet (z. B. bei der
 Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser
 Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 
 Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der
-EU-Datenschutzgrundverordnung (DSGVO), ist:
+EU-Datenschutz-Grundverordnung (DSGVO), ist:
 
 Janine Lindenmann  
 Zielrebenweg 8  
@@ -28,7 +28,7 @@ Zielrebenweg 8
 
 ## Ihre Betroffenenrechte
 
-Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten können
+Unter den oben angegebenen Kontaktdaten können
 Sie jederzeit folgende Rechte ausüben:
 
 - Auskunft über Ihre bei uns gespeicherten Daten und deren Verarbeitung,
@@ -56,8 +56,8 @@ nur an Dritte weiter, wenn:
 - Sie Ihre ausdrückliche Einwilligung dazu erteilt haben,
 - die Verarbeitung zur Abwicklung eines Vertrags mit Ihnen erforderlich ist,
 - die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist,
-- die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist und kein an der Nichtweitergabe Ihrer Daten
-  haben.
+- die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist und kein Grund zur Annahme besteht, dass Sie ein überwiegendes schutzwürdiges Interesse an der
+  Nichtweitergabe Ihrer Daten haben.
 
 ## Löschung bzw. Sperrung der Daten
 
@@ -88,5 +88,5 @@ Anfrage werden personenbezogene Daten automatisch gelöscht.
 
 Ich behalte mir vor, diese Datenschutzerklärung anzupassen, damit sie stets den
 aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer
-Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer
+Leistungen in der Datenschutzerklärung umzusetzen, z. B. bei der Einführung neuer
 Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.

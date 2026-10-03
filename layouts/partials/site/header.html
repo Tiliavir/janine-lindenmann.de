@@ -1,10 +1,10 @@
-<a href="#site-main" class="banner__skip">Skip to main content</a>
+<a href="#site-main" class="banner__skip">Zum Inhalt springen</a>
 
 <div id="site-banner" class="banner">
   <div class="site__container">
     <header class="banner__header">
       <div class="banner__brand">
-        <a href="/" title="{{ .Site.Params.brand.title }} Home">
+        <a href="/" title="Zur Startseite">
           <span class="banner__name banner__name--long">
             {{- if .Site.Params.brand.logo }}
             <img src="{{ .Site.Params.brand.logo }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo">
@@ -28,26 +28,26 @@
         <p class="banner__tagline">{{ .Site.Params.brand.tagline }}</p>
         {{- end }}
       </div>
-      <button id="nav-toggle" class="banner__nav-toggle" title="Open main site navigation">
+      <button id="nav-toggle" type="button" class="banner__nav-toggle" title="Navigation öffnen" aria-label="Navigation öffnen" aria-controls="site-nav" aria-expanded="false">
         ☰
       </button>
     </header>
 
-    <nav id="site-nav" class="banner__nav" aria-label="Primary navigation">
+    <nav id="site-nav" class="banner__nav" aria-label="Hauptnavigation">
       <ul>
         {{- $currentURL := .RelPermalink }}
         {{- range .Site.Menus.main }}
         {{- $active := or (eq $currentURL .URL) (where .Children "URL" "eq" $currentURL) }}
-        <li{{ if $active }} aria-current="page"{{ end }}>
+        <li{{ if $active }} class="is-active"{{ end }}>
           {{- if not .HasChildren }}
-            <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+            <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
           {{- else }}
             <span>{{ .Name }}</span>
             <ul class="submenu">
               {{- range .Children }}
               {{- $subActive := eq $currentURL .URL }}
-              <li{{ if $subActive }} aria-current="page"{{ end }}>
-              <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+              <li{{ if $subActive }} class="is-active"{{ end }}>
+              <a href="{{ .URL }}"{{ if $subActive }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
               </li>
               {{- end }}
             </ul>
