@@ -1,5 +1,7 @@
 User-agent: *
-
 Allow: /
 
 Sitemap: https://www.janine-lindenmann.de/sitemap.xml
+
+# Kurzfassung der Website für Sprachmodelle (https://llmstxt.org/)
+# LLM-friendly summary of this site: https://www.janine-lindenmann.de/llms.txt

@@ -5,8 +5,11 @@ RewriteBase /
 RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|OPTIONS)
 RewriteRule .* - [F]
 
-RewriteCond %{HTTP_HOST} !^www\.
-RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+# Canonical origin: https://www.janine-lindenmann.de (redirects http:// and the bare domain in one hop)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L,NE]
 
 # CharSet
 AddDefaultCharset UTF-8
@@ -70,20 +73,24 @@ AddType application/font-woff2 .woff2
 </ifModule>
 
 <ifModule mod_headers.c>
-  Header set Connection keep-alive
+  # Everything (fonts, images, scripts, styles) is served from this origin; external sites are only linked.
+  # Inline <script> blocks are allowed by SHA-256 hash; the placeholder below is filled in by csp-hashes.mjs during "npm run build".
+  # Inline styles stay allowed (style attributes and the inlined, purged stylesheet).
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'self' 'sha256-FA3cCfsRjzjjd75WokicoQrRS+Pj87iNQOrqD8P+qMo=' 'sha256-GDwEvz0QKoC2tPGPKKKAYIqgHBnWk5PXtW75Hw9notk=' 'sha256-naBMQMfhRQ8toy2eQay1WnuSn8TmzUsgHtvc/3mGRsM=' 'sha256-rT0yq+6LQl84Hc9fg5VhjtXYb2/6pMS24GX+fjPr5xI='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 
-  # X-Frame-Options to avoid Clickjacking
-  Header always append X-Frame-Options SAMEORIGIN
+  # Legacy clickjacking protection for browsers without frame-ancestors support
+  Header always set X-Frame-Options "DENY"
 
-  Header set Referrer-Policy "no-referrer"
-
-  Header set Content-Security-Policy "default-src 'self' https://www.mv-wollbach.de; script-src 'self' 'unsafe-inline' cdn.ampproject.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' lh3.googleusercontent.com; media-src youtube-nocookie.com; frame-src www.youtube-nocookie.com; font-src 'self'; connect-src 'self'"
-  Header set X-Content-Security-Policy "default-src 'self' https://www.mv-wollbach.de; script-src 'self' 'unsafe-inline' cdn.ampproject.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' lh3.googleusercontent.com; media-src youtube-nocookie.com; frame-src www.youtube-nocookie.com; font-src 'self'; connect-src 'self'"
-  Header set X-WebKit-CSP "default-src 'self' https://www.mv-wollbach.de; script-src 'self' 'unsafe-inline' cdn.ampproject.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' lh3.googleusercontent.com; media-src youtube-nocookie.com; frame-src www.youtube-nocookie.com; font-src 'self'; connect-src 'self'"
+  # Only sent over HTTPS (mod_ssl sets the HTTPS variable); no includeSubDomains/preload so other subdomains are unaffected
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
 
   Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Permissions-Policy "accelerometer=(), browsing-topics=(), camera=(), display-capture=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
 
-  Header always set Permissions-Policy "fullscreen=()"
+  # Do not advertise server software/versions where the host allows it
+  Header always unset X-Powered-By
 </ifModule>
 
 # Error Pages
