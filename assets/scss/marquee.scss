@@ -58,3 +58,22 @@
     transform: translateX(-100%);
   }
 }
+
+/* No endless scrolling for users who prefer reduced motion: show the quotes as a wrapping list instead */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-container {
+    white-space: normal;
+
+    .marquee-content {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .marquee-content[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}

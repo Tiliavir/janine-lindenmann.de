@@ -1,6 +1,6 @@
 ---
 title: Impressum
-description: "Impressum von janine-lindenmann.de. Hier finden Sie alle rechtlichen Informationen zu unserem Unternehmen, einschließlich der Kontaktangaben, Vertretungsberechtigten und der Umsatzsteuer-ID."
+description: "Impressum von janine-lindenmann.de: Anbieterkennzeichnung, Kontaktangaben und Umsatzsteuer-ID von Janine Lindenmann, Freie Rednerin (IHK)."
 keywords: [ "Impressum", "Kontakt", "Übersicht", "Webseiteninformationen", "Informationen zur Webseite", "Rechtliches", "Haftung", "Haftungsausschluss", "Datenschutz" ]
 ---
 
@@ -16,9 +16,9 @@ E-Mail: [kontakt@janine-lindenmann.de](mailto:kontakt@janine-lindenmann.de)
 Website: [https://www.janine-lindenmann.de](https://www.janine-lindenmann.de)
 
 **Umsatzsteuer-ID**  
-Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: `DE452528889`
+Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: `DE452528889`
 
-### Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+### Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
 
 Janine Lindenmann  
 Zielrebenweg 8  
@@ -40,7 +40,7 @@ Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung
 
 ### Verweise und Links
 
-Bei direkten oder indirekten Verweisen auf fremde Webseiten (“Hyperlinks”), die außerhalb des Verantwortungsbereiches
+Bei direkten oder indirekten Verweisen auf fremde Webseiten („Hyperlinks“), die außerhalb des Verantwortungsbereiches
 des Autors liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall in Kraft treten, in dem der Autor von den
 Inhalten Kenntnis hat und es ihm technisch möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu
 verhindern. Der Autor erklärt hiermit ausdrücklich, dass zum Zeitpunkt der Linksetzung keine illegalen Inhalte auf den
@@ -68,7 +68,7 @@ elektronischen oder gedruckten Publikationen ist ohne ausdrückliche Zustimmung 
 
 ### Datenschutz
 
-[Hier finden Sie meine Datenschutzerklärung](/datenschutz).
+[Hier finden Sie meine Datenschutzerklärung](/datenschutz/).
 
 ### Rechtswirksamkeit dieses Haftungsausschlusses
 

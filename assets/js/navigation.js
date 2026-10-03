@@ -10,14 +10,18 @@ const navMenu = document.querySelector("#site-nav");
 const closeNav = () => {
     navMenu.classList.remove("banner__nav--open");
     navToggle.innerHTML = "☰";
-    navToggle.title = "Open main site navigation";
+    navToggle.title = "Navigation öffnen";
+    navToggle.setAttribute("aria-label", "Navigation öffnen");
+    navToggle.setAttribute("aria-expanded", "false");
 };
 
 // open the nav menu
 const openNav = () => {
     navMenu.classList.add("banner__nav--open");
     navToggle.innerHTML = "×";
-    navToggle.title = "Close main site navigation";
+    navToggle.title = "Navigation schließen";
+    navToggle.setAttribute("aria-label", "Navigation schließen");
+    navToggle.setAttribute("aria-expanded", "true");
 };
 
 // listen for click on menu button to open/close nav

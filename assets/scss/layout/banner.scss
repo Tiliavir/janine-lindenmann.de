@@ -182,7 +182,7 @@
           background-position: 0 90%, 0 90%, 100% 90%;
         }
 
-        &[aria-current="page"] {
+        &.is-active {
           border-bottom: 5px solid var(--color-text-link);
 
           @media screen and (max-width: 50rem) {
@@ -201,7 +201,7 @@
           li {
             padding: 0.5rem;
 
-            &[aria-current="page"] {
+            &.is-active {
               border-bottom: initial;
             }
 

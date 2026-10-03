@@ -7,6 +7,7 @@ defaultContentLanguage = "de"
 enableInlineShortcodes = true
 enableEmoji = false
 enableRobotsTXT = true
+enableGitInfo = true
 pagination.pagerSize = 6
 
 disableKinds = ["taxonomy", "term", "RSS"]
@@ -17,6 +18,8 @@ disableKinds = ["taxonomy", "term", "RSS"]
     priority = 0.5
 
 [params]
+    author = "Janine Lindenmann"
+    description = "Janine Lindenmann ist freie Rednerin (IHK) für freie Trauungen und Kinderwillkommensfeste im Südschwarzwald, am Kaiserstuhl, am Hochrhein und in der Deutschschweiz."
     cdn = false
     mainSections = []
     keywords = ["Hochzeit", "Traurednerin", "Rede", "Freie Rednerin", "Freier Redner", "Südschwarzwald", "konfessionslos", "zweisprachig", "weltlich", "Traurednerin gesucht", "Hochzeitsrednerin", "Freie Trauung", "Willkommensfest", "Feier", "Zeremonie", "Symbolische Handlung", "Ritual", "Rednerin", "Redner"]
@@ -26,7 +29,10 @@ disableKinds = ["taxonomy", "term", "RSS"]
     name = "Janine Lindenmann | Freie Rednerin (IHK)"
     logoShort = "/img/icons/banner-narrow-250512.svg"
     nameShort = "Janine Lindenmann"
-    tagline = "Euer Moment - meine Worte. Klar. Tiefgründig. Ergreifend."
+    tagline = "Euer Moment – meine Worte. Klar. Tiefgründig. Ergreifend."
+
+[params.style]
+    color_primary = "#7a4e48"
 
 [params.meta]
     baseOGImage = "/img/brand.png"

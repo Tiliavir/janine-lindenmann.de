@@ -1,8 +1,11 @@
 ---
-title: 401 - Nicht autorisiert
+title: 401 – Nicht autorisiert
+noindex: true
+sitemap:
+  disable: true
 description: Leider keinen Zugriff!
 ---
 
-Ups! Du scheinst keinen Zugriff auf diese Seite zu haben. Klick einfach "Zurück", um wieder auf Kurs zu kommen.
+Ups! Ihr habt leider keinen Zugriff auf diese Seite. Klickt einfach auf „Zurück“, um wieder auf Kurs zu kommen.
 
-<button onclick="history.back()">Zurück</button>
+<button type="button" data-history-back>Zurück</button> oder <a href="/">zur Startseite</a>

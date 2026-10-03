@@ -5,11 +5,11 @@ description: Gestaltet eure Zeremonie nach euren Wünschen – romantisch, moder
 keywords: [ "freie Trauung", "Freie Rednerin", "Traurednerin", "Hochzeit", "Schwarzwald", "Hochrhein", "Deutschschweiz", "Kaiserstuhl", "Freiburg", "individuelle Zeremonie", "romantische Trauung", "moderne Hochzeit", "emotional", "mit Herz", "Symbolische Handlung", "Traurede", "freies Sprechen", "Authentizität", "Nachhaltigkeit", "Gewissenhaftigkeit", "Klarheit"]
 ---
 
-{{< image-slider classes="wide-image" isAboveTheFold=true images="wedding-1.webp,wedding-2.webp,wedding-3.webp,wedding-4.webp" >}}
+{{< image-slider classes="wide-image" isAboveTheFold=true images="wedding-1.webp,wedding-2.webp,wedding-3.webp,wedding-4.webp" alts="Weiße Stühle mit Blumenschmuck bei einer Trauung im Freien|Brautpaar hält sich an den Händen|Mit Blumen geschmückter Traubogen und Stuhlreihen auf einer Wiese mit Hügellandschaft|Brautpaar sitzt lachend auf einer Bank unter einer Trauerweide" >}}
 
 # Freie Trauung
 
-Eine freie Trauung bietet euch die Möglichkeit ganz frei zu entscheiden, wie ihr euch euer Eheversprechen geben möchtet.
+Eine freie Trauung bietet euch die Möglichkeit, ganz frei zu entscheiden, wie ihr euch euer Eheversprechen geben möchtet.
 Gerne mache ich euch einen Vorschlag zu einem möglichen Ablauf. Die finale
 Entscheidung liegt natürlich immer bei euch, denn ihr steht an diesem Tag im Mittelpunkt.
 
@@ -21,16 +21,16 @@ Ich möchte euch mit meinen Worten ein Geschenk überreichen, das so besonders u
 
 Meine Reden spreche ich frei.
 
-Gerne biete ich euch auch zweisprachige Hochzeiten an (Deutsch / Englisch).
+Gerne biete ich euch auch zweisprachige Hochzeiten an (Deutsch/Englisch).
 
-Ihr wünscht euch ein harmonisches Gesamtbild? Meine Kleidung spreche ich immer vorher mit euch ab. Ich liebe es Kleider
+Ihr wünscht euch ein harmonisches Gesamtbild? Meine Kleidung spreche ich immer vorher mit euch ab. Ich liebe es, Kleider
 zu tragen und passe mich gerne eurem Farbkonzept an.
 
 <div class="highlight">
     <h3>Meine Werte</h3>
     <ul>
         <li>Authentizität: Echtheit und Aufrichtigkeit prägen meine Worte und vermitteln eine unverstellte, persönliche Note, die Nähe schafft.</li>
-        <li>Klarheit: Mit präziser und verständlicher Ausdrucksweise stelle ich sicher, dass jede Botschaft unmissverständlich ankommt und das Wesentliche - nämlich ihr - im Mittelpunkt steht.</li>
+        <li>Klarheit: Mit präziser und verständlicher Ausdrucksweise stelle ich sicher, dass jede Botschaft unmissverständlich ankommt und das Wesentliche – nämlich ihr – im Mittelpunkt steht.</li>
         <li>Nachhaltigkeit: Meine Zeremonien und Worte sind darauf ausgerichtet, nachhaltige Eindrücke zu hinterlassen – Momente, die lange im Herzen nachhallen.</li>
         <li>Gewissenhaftigkeit: Mit viel Liebe zum Detail und einem hohen Verantwortungsbewusstsein bereite ich jede Zeremonie vor, um sie perfekt auf den Moment abzustimmen.</li>
     </ul>
@@ -38,7 +38,7 @@ zu tragen und passe mich gerne eurem Farbkonzept an.
 {{< /collapsible >}}
 
 {{< collapsible title="Möglicher Ablauf" >}}
-Hier seht ihr einen möglichen Ablauf eurer freier Trauung von ca. 45 Minuten. Gerne erläutere ich euch die
+Hier seht ihr einen möglichen Ablauf eurer freien Trauung von ca. 45 Minuten. Gerne erläutere ich euch die
 einzelnen Elemente in einem unverbindlichen Kennenlerngespräch.
 Anpassungen und Integration eurer individuellen Wünsche sind selbstverständlich möglich. Die finale Entscheidung für den
 Ablauf liegt bei euch, denn es ist eure Zeremonie:
@@ -57,8 +57,8 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 
 {{< collapsible title="Mein Angebot" >}}
 
-- Ein unverbindliches und kostenfreies Gespräch zum Kennenlernen präferiert bei mir Zuhause in 79400 Kandern-Wollbach.
-  Falls es die Distanz nicht zulässt auch gerne digital
+- Ein unverbindliches und kostenfreies Gespräch zum Kennenlernen, präferiert bei mir zu Hause in 79400 Kandern-Wollbach.
+  Falls es die Distanz nicht zulässt, auch gerne digital
 - Ein intensives Zweitgespräch, um die Details eurer Trauung zu besprechen und um euch noch besser kennenzulernen
 - Ein persönlicher Fragebogen als Ergänzung zum Zweitgespräch
 - Ein Wedding Guide mit vielen Ideen für eure Planung
@@ -67,5 +67,5 @@ Ablauf liegt bei euch, denn es ist eure Zeremonie:
 - Eine individuelle, frei gesprochene Rede über euch
 - Leitung der Zeremonie vom Einzug bis zum Auszug
 
-Interesse geweckt? <a href="/kontakt">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
+Interesse geweckt? <a href="/kontakt/">Meldet euch gerne bei mir</a> und ich sende euch ein individuelles Angebot zu.
 {{< /collapsible >}}

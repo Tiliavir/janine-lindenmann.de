@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}
+
+# Kurzfassung der Website für Sprachmodelle (https://llmstxt.org/)
+# LLM-friendly summary of this site: {{ "llms.txt" | absURL }}

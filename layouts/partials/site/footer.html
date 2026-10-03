@@ -1,19 +1,19 @@
 <footer id="site-footer" class="footer">
-  <img class="footer-brand" src="/img/icons/brand.svg" alt="JL - Freie Rednerin">
-  <nav id="footer-main-nav" class="banner__nav" aria-label="Secondary navigation">
+  <img class="footer-brand" src="/img/icons/brand.svg" alt="JL – Janine Lindenmann, Freie Rednerin">
+  <nav id="footer-main-nav" class="banner__nav" aria-label="Seitennavigation">
     <ul>
       {{- $currentURL := .RelPermalink }}
       {{- range .Site.Menus.main }}
         {{- if not .HasChildren }}
           {{- $active := eq $currentURL .URL }}
-          <li{{ if $active }} aria-current="page"{{ end }}>
-            <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+          <li{{ if $active }} class="is-active"{{ end }}>
+            <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
           </li>
         {{- else }}
           {{- range .Children }}
             {{- $active := eq $currentURL .URL }}
-            <li{{ if $active }} aria-current="page"{{ end }}>
-              <a href="{{ .URL }}">{{ .Name | safeHTML }}</a>
+            <li{{ if $active }} class="is-active"{{ end }}>
+              <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
             </li>
           {{- end }}
         {{- end }}
@@ -21,30 +21,30 @@
     </ul>
   </nav>
   <p class="social-media">
-    <a href="https://instagram.com/freie_rednerin_janine" target="_blank">
-      <img src="/img/icons/instagram.svg" alt="Instagram">
+    <a href="https://www.instagram.com/freie_rednerin_janine" target="_blank" rel="noopener me">
+      <img src="/img/icons/instagram.svg" alt="Instagram (öffnet in neuem Tab)">
     </a>
-    <a href="mailto:kontakt@janine-lindenmann.de" target="_blank">
-      <img src="/img/icons/email.svg" alt="eMail">
+    <a href="mailto:kontakt@janine-lindenmann.de">
+      <img src="/img/icons/email.svg" alt="E-Mail an kontakt@janine-lindenmann.de">
     </a>
-    <a href="https://maps.app.goo.gl/tHoZevULsWsQHbjX6" target="_blank">
-      <img src="/img/icons/location.svg" alt="Google Maps">
+    <a href="https://maps.app.goo.gl/tHoZevULsWsQHbjX6" target="_blank" rel="noopener">
+      <img src="/img/icons/location.svg" alt="Standort und Bewertungen auf Google Maps (öffnet in neuem Tab)">
     </a>
-    <a href="tel:+4915679604716" target="_blank">
-      <img src="/img/icons/phone.svg" alt="Telefon">
+    <a href="tel:+4915679604716">
+      <img src="/img/icons/phone.svg" alt="Anrufen: +49 156 7960 4716">
     </a>
-    <a href="https://wa.me/4915679604716" target="_blank">
-      <img src="/img/icons/whatsapp.svg" alt="WhatsApp">
+    <a href="https://wa.me/4915679604716" target="_blank" rel="noopener">
+      <img src="/img/icons/whatsapp.svg" alt="WhatsApp-Nachricht schreiben (öffnet in neuem Tab)">
     </a>
   </p>
   <hr>
-  <nav id="footer-nav" class="banner__nav" aria-label="Secondary navigation">
+  <nav id="footer-nav" class="banner__nav" aria-label="Rechtliches">
     <ul>
       {{- $currentURL := .RelPermalink }}
       {{- range .Site.Menus.footer }}
-        {{- $active := and (eq $currentURL .URL) }}
-        <li{{ if $active }} aria-current="page"{{ end }}>
-          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- $active := eq $currentURL .URL }}
+        <li{{ if $active }} class="is-active"{{ end }}>
+          <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
         </li>
       {{- end }}
     </ul>
