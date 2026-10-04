@@ -50,3 +50,26 @@ To build the release version, use:
 scripts in `public/` and writes them into `public/.htaccess`. It fails the build on inline event handlers
 (`onclick=` etc. – use `addEventListener`) or external scripts. Embedding anything external (fonts, maps, videos)
 requires extending the CSP.
+
+## Deployment
+
+Pushing a tag on `main` builds the site and syncs `public/` to the Alfahosting webspace with `rsync` over SSH
+(`.github/workflows/deploy.yml`). Files that no longer exist in the build are deleted on the server, except
+`.well-known/`, `logs/`, `stats/` and `cgi-bin/`. Before syncing, the workflow checks that the target directory
+already contains `index.html` and `contact.php`, so a wrong path can never be wiped.
+
+One-time setup under *Settings → Secrets and variables → Actions*. The connection data is shown in CloudPit:
+*Meine Verträge → Vertrag → Zugänge → CloudPit → Shell-Zugang einrichten*.
+
+| Name | Type | Value |
+|---|---|---|
+| `SSH_HOST` | variable | SSH server from CloudPit |
+| `SSH_USER` | variable | SSH user from CloudPit (primary FTP user) |
+| `SSH_PORT` | variable | optional, default `22` |
+| `SSH_TARGET_DIR` | variable | web root, relative to the SSH home or absolute – find it with `ssh user@host 'pwd; ls'` |
+| `SSH_KNOWN_HOSTS` | secret | output of `ssh-keyscan -p 22 <host>` (for a port other than 22 the line starts with `[host]:port`) |
+| `SSH_PRIVATE_KEY` | secret | preferred: private key of a dedicated deploy key; its public key goes into `~/.ssh/authorized_keys` on the server |
+| `SSH_PASSWORD` | secret | fallback if keys are not accepted: the primary FTP password |
+
+If `SSH_PRIVATE_KEY` is set it is used, otherwise `SSH_PASSWORD`. Once the first SSH deploy has worked, the old
+`ftp_user` / `ftp_password` secrets and `.ftp-deploy-sync-state.json` on the server can be deleted.

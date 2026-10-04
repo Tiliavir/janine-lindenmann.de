@@ -31,7 +31,7 @@ jobs:
       - name: ⚙ Build
         run: npm run build
       - name: 🏷️ Get tag name
-        run: echo "TAG_NAME=$(echo ${GITHUB_REF#refs/*/} | tr / -)" >> $GITHUB_ENV
+        run: echo "TAG_NAME=$(echo "${GITHUB_REF#refs/*/}" | tr / -)" >> "$GITHUB_ENV"
       - name: 📂 Archive
         uses: JamesIves/github-pages-deploy-action@v4.9.0
         with:
@@ -39,14 +39,60 @@ jobs:
           folder: public
           clean: true
           commit-message: Release ${{ env.TAG_NAME }}
+      - name: 🔑 Prepare SSH
+        env:
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          SSH_TARGET_DIR: ${{ vars.SSH_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+          for v in SSH_HOST SSH_USER SSH_TARGET_DIR SSH_KNOWN_HOSTS; do
+            if [ -z "${!v}" ]; then echo "::error::$v is not configured (see README, section Deployment)"; exit 1; fi
+          done
+
+          install -d -m 700 ~/.ssh
+          # pinned host key - no trust-on-first-use
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          SSH_OPTS="-p ${{ vars.SSH_PORT || '22' }} -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o StrictHostKeyChecking=yes"
+          if [ -n "$SSH_PRIVATE_KEY" ]; then
+            printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+            chmod 600 ~/.ssh/deploy_key
+            echo "SSH_CMD=ssh $SSH_OPTS -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o PasswordAuthentication=no" >> "$GITHUB_ENV"
+          elif [ -n "$SSH_PASSWORD" ]; then
+            sudo apt-get install -y -qq sshpass > /dev/null
+            echo "SSH_CMD=sshpass -e ssh $SSH_OPTS -o PubkeyAuthentication=no" >> "$GITHUB_ENV"
+          else
+            echo "::error::Neither SSH_PRIVATE_KEY nor SSH_PASSWORD is set"; exit 1
+          fi
+      - name: 🩺 Check target
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_TARGET_DIR: ${{ vars.SSH_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+          # rsync --delete must never run against a wrong directory: require the live site to be there
+          $SSH_CMD "${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}" \
+            "command -v rsync >/dev/null || { echo 'rsync not installed on server'; exit 1; }; \
+             test -f '$SSH_TARGET_DIR/index.html' && test -f '$SSH_TARGET_DIR/contact.php' \
+             || { echo 'target dir does not look like the website root: $SSH_TARGET_DIR'; exit 1; }"
       - name: 🎉 Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: web27.alfahosting-server.de
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_password }}
-          protocol: ftps
-          local-dir: ./public/
-          server-dir: /
-          security: loose
-          port: 21
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_TARGET_DIR: ${{ vars.SSH_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+          # --delete removes stale files (e.g. old fingerprinted images); server-managed paths are excluded
+          rsync -rlptzv --checksum --delete-delay \
+            --exclude '/.well-known/' \
+            --exclude '/.ftp-deploy-sync-state.json' \
+            --exclude '/logs/' --exclude '/stats/' --exclude '/cgi-bin/' \
+            -e "$SSH_CMD" \
+            ./public/ "${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:$SSH_TARGET_DIR/"
+      - name: 🧹 Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
