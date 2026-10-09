@@ -37,23 +37,25 @@ foreach ($_POST as $key => $val) {
     }
 }
 
+const LINE_BREAK_PATTERN = '/[\r\n]/';
+
 // Sanitize helper
-function clean_text($s, $maxLength = 2000) {
+function cleanText($s, $maxLength = 2000) {
     return substr(preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/u', '', strip_tags(trim($s))), 0, $maxLength);
 }
 
 // Validierung
 $errors = [];
 
-$name = clean_text($_POST['name'] ?? '', 100);
+$name = cleanText($_POST['name'] ?? '', 100);
 $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
 $ceremony = $_POST['ceremony'] ?? '';
-$message = clean_text($_POST['message'] ?? '', 2000);
+$message = cleanText($_POST['message'] ?? '', 2000);
 
-if ($name === '' || strlen($name) > 100 || preg_match('/[\r\n]/', $name)) {
+if ($name === '' || strlen($name) > 100 || preg_match(LINE_BREAK_PATTERN, $name)) {
     $errors[] = 'Name ungültig.';
 }
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)) {
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match(LINE_BREAK_PATTERN, $email)) {
     $errors[] = 'E-Mail ungültig.';
 }
 if (!in_array($ceremony, ['freie-trauung', 'kinderwillkommensfest'])) {
@@ -70,9 +72,9 @@ if (!empty($errors)) {
 }
 
 // Optionale Felder
-$residence = clean_text($_POST['residence'] ?? '', 100);
-$date = clean_text($_POST['date'] ?? '', 30);
-$location = clean_text($_POST['location'] ?? '', 100);
+$residence = cleanText($_POST['residence'] ?? '', 100);
+$date = cleanText($_POST['date'] ?? '', 30);
+$location = cleanText($_POST['location'] ?? '', 100);
 
 // Mail-Vorbereitung
 $to = 'kontakt@janine-lindenmann.de';
@@ -94,7 +96,7 @@ $headers = [
 ];
 
 foreach ($headers as $k => $v) {
-    if (preg_match('/[\r\n]/', $v)) {
+    if (preg_match(LINE_BREAK_PATTERN, $v)) {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Header ungültig.']);
         exit;

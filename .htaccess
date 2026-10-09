@@ -76,7 +76,7 @@ AddType application/font-woff2 .woff2
   # Everything (fonts, images, scripts, styles) is served from this origin; external sites are only linked.
   # Inline <script> blocks are allowed by SHA-256 hash; the placeholder below is filled in by csp-hashes.mjs during "npm run build".
   # Inline styles stay allowed (style attributes and the inlined, purged stylesheet).
-  Header always set Content-Security-Policy "default-src 'none'; script-src 'self' 'sha256-FA3cCfsRjzjjd75WokicoQrRS+Pj87iNQOrqD8P+qMo=' 'sha256-GDwEvz0QKoC2tPGPKKKAYIqgHBnWk5PXtW75Hw9notk=' 'sha256-naBMQMfhRQ8toy2eQay1WnuSn8TmzUsgHtvc/3mGRsM=' 'sha256-rT0yq+6LQl84Hc9fg5VhjtXYb2/6pMS24GX+fjPr5xI='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'self' 'sha256-fmEK6CC/1HiyxAQAzihaCf0rTk5sLQIKrglkwl4j/z4=' 'sha256-GDwEvz0QKoC2tPGPKKKAYIqgHBnWk5PXtW75Hw9notk=' 'sha256-naBMQMfhRQ8toy2eQay1WnuSn8TmzUsgHtvc/3mGRsM=' 'sha256-peLWFRdEd15z8HfBIsIYQX9wJuDfQRYSJpMeUf+j5ZU='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 
   # Legacy clickjacking protection for browsers without frame-ancestors support
   Header always set X-Frame-Options "DENY"
