@@ -28,6 +28,7 @@
         <label for="message">Eure Nachricht an mich</label>
         <textarea maxlength="2000" id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
 
+        <label for="msg" style="display:none">Website (bitte leer lassen)</label>
         <input maxlength="2000" id="msg" type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <button type="submit" class="accent">Absenden</button>
@@ -74,6 +75,7 @@
                     responseBox.innerText = data.errors ? data.errors.join('\n') : data.message;
                 }
             } catch (err) {
+                console.error('Kontaktformular konnte nicht gesendet werden:', err);
                 responseBox.className = 'message-box error';
                 responseBox.innerText = 'Verbindungsfehler – bitte erneut versuchen.';
             } finally {

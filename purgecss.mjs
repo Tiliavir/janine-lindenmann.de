@@ -1,6 +1,6 @@
 'use strict';
 
-import fs from "fs/promises";
+import fs from "node:fs/promises";
 import { PurgeCSS } from "purgecss";
 import glob from "glob-all";
 
@@ -38,6 +38,4 @@ const processHTMLFile = async (filepath) => {
 const rootDir = process.argv[2] || "public/";
 const htmlFiles = glob.sync([`${rootDir}/**/*.html`]);
 
-for (const file of htmlFiles) {
-    await processHTMLFile(file);
-}
+await Promise.all(htmlFiles.map(processHTMLFile));
