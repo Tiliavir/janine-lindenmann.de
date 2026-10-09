@@ -9,8 +9,8 @@
  * Fails the build on inline event handlers (onclick=...) or external scripts, which the CSP would block.
  */
 
-import fs from "fs/promises";
-import crypto from "crypto";
+import fs from "node:fs/promises";
+import crypto from "node:crypto";
 import glob from "glob-all";
 
 const rootDir = (process.argv[2] || "public").replace(/\/$/, "");
@@ -23,8 +23,11 @@ const handlerRe = /<[a-z][^>]*\son[a-z]+\s*=/i;
 const hashes = new Set();
 const problems = [];
 
-for (const file of glob.sync([`${rootDir}/**/*.html`])) {
-    const html = await fs.readFile(file, "utf-8");
+const files = glob.sync([`${rootDir}/**/*.html`]);
+const contents = await Promise.all(files.map((file) => fs.readFile(file, "utf-8")));
+
+for (const [i, file] of files.entries()) {
+    const html = contents[i];
 
     if (handlerRe.test(html)) {
         problems.push(`${file}: inline event handler (on...=) found – use addEventListener instead`);
@@ -57,5 +60,5 @@ if (!htaccess.includes(placeholder)) {
     process.exit(1);
 }
 
-await fs.writeFile(htaccessPath, htaccess.replaceAll(placeholder, [...hashes].sort().join(" ")), "utf-8");
+await fs.writeFile(htaccessPath, htaccess.replaceAll(placeholder, [...hashes].sort((a, b) => a.localeCompare(b)).join(" ")), "utf-8");
 console.log(`🔒 CSP: ${hashes.size} inline script hash(es) written to ${htaccessPath}`);

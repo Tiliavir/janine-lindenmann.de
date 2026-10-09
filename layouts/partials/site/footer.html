@@ -51,4 +51,4 @@
   </nav>
 </footer>
 {{ $js := resources.Match "js/*.js" | resources.Concat "scripts/bundle.js" | resources.Minify }}
-<script>{{ $js.Content | safeJS }}</script>
+{{ printf "<script>%s</script>" $js.Content | safeHTML }}

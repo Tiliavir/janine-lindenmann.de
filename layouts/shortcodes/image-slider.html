@@ -63,11 +63,11 @@
         const sliders = document.querySelectorAll('.image-fade-slider');
 
         sliders.forEach(slider => {
-            const images = JSON.parse(slider.getAttribute('data-images'));
-            const smallImages = JSON.parse(slider.getAttribute('data-small-images'));
-            const largeImages = JSON.parse(slider.getAttribute('data-large-images'));
-            const interval = parseInt(slider.getAttribute('data-interval'), 10) || 5000;
-            const alts = JSON.parse(slider.getAttribute('data-alts') || '[]');
+            const images = JSON.parse(slider.dataset.images);
+            const smallImages = JSON.parse(slider.dataset.smallImages);
+            const largeImages = JSON.parse(slider.dataset.largeImages);
+            const interval = Number.parseInt(slider.dataset.interval, 10) || 5000;
+            const alts = JSON.parse(slider.dataset.alts || '[]');
             let index = 0;
 
             const picture = slider.querySelector('picture');
