@@ -45,8 +45,17 @@ To build the release version, use:
 
 ## Security headers
 
-`static/.htaccess` sets a strict Content-Security-Policy: everything must come from this origin, and inline
-`<script>` blocks are only allowed by SHA-256 hash. `npm run build` runs `csp-hashes.mjs`, which hashes all inline
-scripts in `public/` and writes them into `public/.htaccess`. It fails the build on inline event handlers
-(`onclick=` etc. – use `addEventListener`) or external scripts. Embedding anything external (fonts, maps, videos)
-requires extending the CSP.
+The site uses a strict Content-Security-Policy: everything must come from this origin, and inline
+`<script>` blocks are only allowed by SHA-256 hash. The hosting proxy does not pass response headers set in
+`static/.htaccess`, so the policy is delivered twice and both copies must be kept in sync:
+
+- `layouts/partials/site/security-meta.html` – CSP and referrer policy as `<meta>` tags, directly after
+  `<meta charset>` (a meta CSP only applies to what follows it). This is what browsers actually enforce today.
+- `static/.htaccess` – the same CSP plus the headers that cannot be set via `<meta>` (`frame-ancestors`,
+  `X-Frame-Options`, HSTS, `X-Content-Type-Options`, COOP, `Permissions-Policy`), effective once the host
+  passes headers through.
+
+`npm run build` runs `csp-hashes.mjs`, which writes each page's inline script hashes into its meta tag and the
+union of all hashes into `public/.htaccess`. It fails the build on inline event handlers (`onclick=` etc. – use
+`addEventListener`), `javascript:` URLs, external scripts, or a CSP meta tag placed after a style/script/`<base>`.
+Embedding anything external (fonts, maps, videos) requires extending both policies.

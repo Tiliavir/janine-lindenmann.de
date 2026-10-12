@@ -79,6 +79,8 @@ AddType application/font-woff2 .woff2
   # Everything (fonts, images, scripts, styles) is served from this origin; external sites are only linked.
   # Inline <script> blocks are allowed by SHA-256 hash; the placeholder below is filled in by csp-hashes.mjs during "npm run build".
   # Inline styles stay allowed (style attributes and the inlined, purged stylesheet).
+  # The host's proxy currently drops these headers; the CSP is also set as <meta> in
+  # layouts/partials/site/security-meta.html – keep both in sync.
   Header always set Content-Security-Policy "default-src 'none'; script-src 'self' __CSP_SCRIPT_HASHES__; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
 
   # Legacy clickjacking protection for browsers without frame-ancestors support
