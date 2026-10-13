@@ -1,0 +1,24 @@
+{{- /*
+  The same policy as the headers in static/.htaccess, but as <meta>: the hosting proxy does not pass
+  custom response headers, so the .htaccess headers never reach the browser. Keep both in sync.
+  Must stay directly after <meta charset> (before <base> and any style/script): a meta CSP only
+  applies to content that follows it.
+  __CSP_SCRIPT_HASHES__ is replaced per page by csp-hashes.mjs during "npm run build".
+  Not possible via <meta> (and therefore only in .htaccess): frame-ancestors, X-Frame-Options, HSTS,
+  X-Content-Type-Options, Cross-Origin-Opener-Policy, Permissions-Policy.
+*/ -}}
+{{- $csp := slice
+  "default-src 'none'"
+  "script-src 'self' __CSP_SCRIPT_HASHES__"
+  "style-src 'self' 'unsafe-inline'"
+  "img-src 'self'"
+  "font-src 'self'"
+  "connect-src 'self'"
+  "manifest-src 'self'"
+  "form-action 'self'"
+  "base-uri 'self'"
+  "object-src 'none'"
+  "upgrade-insecure-requests"
+-}}
+{{ printf "<meta http-equiv=\"Content-Security-Policy\" content=\"%s\">" (delimit $csp "; ") | safeHTML }}
+  <meta name="referrer" content="no-referrer">
