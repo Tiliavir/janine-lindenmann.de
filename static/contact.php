@@ -1,28 +1,45 @@
 <?php
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Nur POST erlaubt.']);
+// Every input is read through these helpers: arrays (name[]=x), missing values or other
+// non-strings become '' instead of a TypeError. Attacker-triggerable fatal errors are the
+// abnormal request termination PHP2Shell (CVE-2026-109618/-109619) builds on.
+function post_str(string $key): string {
+    $v = $_POST[$key] ?? '';
+    return is_string($v) ? $v : '';
+}
+function cookie_str(string $key): string {
+    $v = $_COOKIE[$key] ?? '';
+    return is_string($v) ? $v : '';
+}
+function fail(int $status, array $payload): void {
+    http_response_code($status);
+    echo json_encode(['success' => false] + $payload);
     exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
+    fail(405, ['message' => 'Nur POST erlaubt.']);
+}
+
+// The form is a few short text fields: refuse anything large or with uploaded files.
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 16384 || !empty($_FILES)) {
+    fail(413, ['message' => 'Anfrage zu groß.']);
 }
 
 // Spam-Schutz: Honeypot & JS-Check
-$honeypot = $_POST['website'] ?? '';
-$jscheck = $_POST['jscheck'] ?? '';
-if (!empty($honeypot) || $jscheck !== '1') {
-    http_response_code(403);
-    echo json_encode(['success' => false, 'message' => 'Spamverdacht.']);
-    exit;
+$honeypot = post_str('website');
+$jscheck = post_str('jscheck');
+if ($honeypot !== '' || $jscheck !== '1') {
+    fail(403, ['message' => 'Spamverdacht.']);
 }
 
 // CSRF-Token prüfen (Double Submit Cookie)
-$csrf_cookie = $_COOKIE['csrf_token'] ?? '';
-$csrf_post = $_POST['csrf_token'] ?? '';
-if (empty($csrf_cookie) || empty($csrf_post) || !hash_equals($csrf_cookie, $csrf_post)) {
-    http_response_code(403);
-    echo json_encode(['success' => false, 'message' => 'Ungültiges CSRF-Token.']);
-    exit;
+$csrf_cookie = cookie_str('csrf_token');
+$csrf_post = post_str('csrf_token');
+if ($csrf_cookie === '' || $csrf_post === '' || !hash_equals($csrf_cookie, $csrf_post)) {
+    fail(403, ['message' => 'Ungültiges CSRF-Token.']);
 }
 
 // Whitelist & Validierung
@@ -30,27 +47,27 @@ $fields = [
     'name', 'residence', 'email', 'ceremony', 'date', 'location', 'message', 'csrf_token', 'jscheck', 'website'
 ];
 foreach ($_POST as $key => $val) {
-    if (!in_array($key, $fields)) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Unerlaubtes Feld erkannt.']);
-        exit;
+    if (!in_array($key, $fields, true) || !is_string($val)) {
+        fail(400, ['message' => 'Unerlaubtes Feld erkannt.']);
     }
 }
 
 const LINE_BREAK_PATTERN = '/[\r\n]/';
 
 // Sanitize helper
-function cleanText($s, $maxLength = 2000) {
-    return substr(preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/u', '', strip_tags(trim($s))), 0, $maxLength);
+function cleanText(string $s, int $maxLength = 2000): string {
+    // preg_replace returns null on invalid UTF-8; treat that as empty input instead of passing null on
+    $clean = preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/u', '', strip_tags(trim($s))) ?? '';
+    return substr($clean, 0, $maxLength);
 }
 
 // Validierung
 $errors = [];
 
-$name = cleanText($_POST['name'] ?? '', 100);
-$email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
-$ceremony = $_POST['ceremony'] ?? '';
-$message = cleanText($_POST['message'] ?? '', 2000);
+$name = cleanText(post_str('name'), 100);
+$email = filter_var(post_str('email'), FILTER_SANITIZE_EMAIL);
+$ceremony = post_str('ceremony');
+$message = cleanText(post_str('message'), 2000);
 
 if ($name === '' || strlen($name) > 100 || preg_match(LINE_BREAK_PATTERN, $name)) {
     $errors[] = 'Name ungültig.';
@@ -58,7 +75,7 @@ if ($name === '' || strlen($name) > 100 || preg_match(LINE_BREAK_PATTERN, $name)
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match(LINE_BREAK_PATTERN, $email)) {
     $errors[] = 'E-Mail ungültig.';
 }
-if (!in_array($ceremony, ['freie-trauung', 'kinderwillkommensfest'])) {
+if (!in_array($ceremony, ['freie-trauung', 'kinderwillkommensfest'], true)) {
     $errors[] = 'Zeremonienart ungültig.';
 }
 if (strlen($message) < 10) {
@@ -66,15 +83,13 @@ if (strlen($message) < 10) {
 }
 
 if (!empty($errors)) {
-    http_response_code(422);
-    echo json_encode(['success' => false, 'errors' => $errors]);
-    exit;
+    fail(422, ['errors' => $errors]);
 }
 
 // Optionale Felder
-$residence = cleanText($_POST['residence'] ?? '', 100);
-$date = cleanText($_POST['date'] ?? '', 30);
-$location = cleanText($_POST['location'] ?? '', 100);
+$residence = cleanText(post_str('residence'), 100);
+$date = cleanText(post_str('date'), 30);
+$location = cleanText(post_str('location'), 100);
 
 // Mail-Vorbereitung
 $to = 'kontakt@janine-lindenmann.de';
@@ -97,9 +112,7 @@ $headers = [
 
 foreach ($headers as $k => $v) {
     if (preg_match(LINE_BREAK_PATTERN, $v)) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Header ungültig.']);
-        exit;
+        fail(400, ['message' => 'Header ungültig.']);
     }
 }
 
