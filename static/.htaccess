@@ -96,6 +96,42 @@ AddType application/font-woff2 .woff2
   Header always unset X-Powered-By
 </ifModule>
 
+# PHP: deny by default; only explicitly listed scripts below are reachable.
+# Keeps leftovers, host defaults or planted *.php files from being executed via HTTP.
+# Apache 2.4 (mod_authz_core) with the 2.2 syntax as fallback.
+<FilesMatch "(?i)\.(php\d?|phtml|phar|pht)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Allowlist: PHP files the site actually uses (must come after the deny block).
+<Files "contact.php">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Allow from all
+  </IfModule>
+</Files>
+
+# Interim mitigation for PHP2Shell (CVE-2026-109618/-109619) where PHP runs as mod_php.
+# Not a fix - the hoster must run PHP 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 or a patched backport.
+# For PHP-FPM/CGI the same settings live in static/.user.ini.
+<IfModule mod_php.c>
+  php_value post_max_size 64K
+  php_flag session.upload_progress.enabled off
+</IfModule>
+<IfModule mod_php7.c>
+  php_value post_max_size 64K
+  php_flag session.upload_progress.enabled off
+</IfModule>
+
 # Error Pages
 ErrorDocument 404 /404/
 ErrorDocument 401 /401/
