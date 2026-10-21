@@ -122,7 +122,6 @@ AddType application/font-woff2 .woff2
 
 # Interim mitigation for PHP2Shell (CVE-2026-109618/-109619) where PHP runs as mod_php.
 # Not a fix - the hoster must run PHP 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 or a patched backport.
-# For PHP-FPM/CGI the same settings live in static/.user.ini.
 <IfModule mod_php.c>
   php_value post_max_size 64K
   php_flag session.upload_progress.enabled off
