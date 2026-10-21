@@ -55,6 +55,9 @@ AddType application/font-woff2 .woff2
 <ifModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 days"
+  # HTML always revalidates (cheap 304 via ETag): inline scripts, CSP hashes and contact.php
+  # change together on deploy, so a stale cached page must never be used.
+  ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
@@ -92,6 +95,41 @@ AddType application/font-woff2 .woff2
   # Do not advertise server software/versions where the host allows it
   Header always unset X-Powered-By
 </ifModule>
+
+# PHP: deny by default; only explicitly listed scripts below are reachable.
+# Keeps leftovers, host defaults or planted *.php files from being executed via HTTP.
+# Apache 2.4 (mod_authz_core) with the 2.2 syntax as fallback.
+<FilesMatch "(?i)\.(php\d?|phtml|phar|pht)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Allowlist: PHP files the site actually uses (must come after the deny block).
+<Files "contact.php">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Allow from all
+  </IfModule>
+</Files>
+
+# Interim mitigation for PHP2Shell (CVE-2026-109618/-109619) where PHP runs as mod_php.
+# Not a fix - the hoster must run PHP 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 or a patched backport.
+<IfModule mod_php.c>
+  php_value post_max_size 64K
+  php_flag session.upload_progress.enabled off
+</IfModule>
+<IfModule mod_php7.c>
+  php_value post_max_size 64K
+  php_flag session.upload_progress.enabled off
+</IfModule>
 
 # Error Pages
 ErrorDocument 404 /404/
