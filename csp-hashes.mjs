@@ -1,5 +1,3 @@
-
-
 /*
  * Computes SHA-256 hashes of all inline <script> blocks in the built site and writes
  * them into the Content-Security-Policy in public/.htaccess (placeholder __CSP_SCRIPT_HASHES__).
@@ -9,8 +7,8 @@
  * Fails the build on inline event handlers (onclick=...) or external scripts, which the CSP would block.
  */
 
-import fs from "node:fs/promises";
 import crypto from "node:crypto";
+import fs from "node:fs/promises";
 import glob from "glob-all";
 
 const rootDir = (process.argv[2] || "public").replace(/\/$/, "");
@@ -24,28 +22,43 @@ const hashes = new Set();
 const problems = [];
 
 const files = glob.sync([`${rootDir}/**/*.html`]);
-const contents = await Promise.all(files.map((file) => fs.readFile(file, "utf-8")));
+const contents = await Promise.all(
+    files.map((file) => fs.readFile(file, "utf-8")),
+);
 
 for (const [i, file] of files.entries()) {
     const html = contents[i];
 
     if (handlerRe.test(html)) {
-        problems.push(`${file}: inline event handler (on...=) found – use addEventListener instead`);
+        problems.push(
+            `${file}: inline event handler (on...=) found – use addEventListener instead`,
+        );
     }
 
     for (const [, attrs = "", body] of html.matchAll(scriptRe)) {
         if (/\ssrc\s*=/i.test(attrs)) {
             if (/src\s*=\s*["']?(https?:)?\/\//i.test(attrs)) {
-                problems.push(`${file}: external script ${attrs.trim()} is not allowed by the CSP`);
+                problems.push(
+                    `${file}: external script ${attrs.trim()} is not allowed by the CSP`,
+                );
             }
             continue;
         }
         // data blocks (JSON-LD etc.) are not executed and not subject to script-src
-        const type = /\stype\s*=\s*["']?([^"'\s>]+)/i.exec(attrs)?.[1]?.toLowerCase();
-        if (type && !["text/javascript", "module", "application/javascript"].includes(type)) {
+        const type = /\stype\s*=\s*["']?([^"'\s>]+)/i
+            .exec(attrs)?.[1]
+            ?.toLowerCase();
+        if (
+            type &&
+            !["text/javascript", "module", "application/javascript"].includes(
+                type,
+            )
+        ) {
             continue;
         }
-        hashes.add(`'sha256-${crypto.createHash("sha256").update(body, "utf8").digest("base64")}'`);
+        hashes.add(
+            `'sha256-${crypto.createHash("sha256").update(body, "utf8").digest("base64")}'`,
+        );
     }
 }
 
@@ -60,5 +73,14 @@ if (!htaccess.includes(placeholder)) {
     process.exit(1);
 }
 
-await fs.writeFile(htaccessPath, htaccess.replaceAll(placeholder, [...hashes].sort((a, b) => a.localeCompare(b)).join(" ")), "utf-8");
-console.log(`🔒 CSP: ${hashes.size} inline script hash(es) written to ${htaccessPath}`);
+await fs.writeFile(
+    htaccessPath,
+    htaccess.replaceAll(
+        placeholder,
+        [...hashes].sort((a, b) => a.localeCompare(b)).join(" "),
+    ),
+    "utf-8",
+);
+console.log(
+    `🔒 CSP: ${hashes.size} inline script hash(es) written to ${htaccessPath}`,
+);
