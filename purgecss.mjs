@@ -1,8 +1,6 @@
-'use strict';
-
 import fs from "node:fs/promises";
-import { PurgeCSS } from "purgecss";
 import glob from "glob-all";
+import { PurgeCSS } from "purgecss";
 
 const extractInlineCSS = (html) => {
     const match = html.match(/<style[^>]*>([\s\S]*?)<\/style>/);
@@ -10,7 +8,10 @@ const extractInlineCSS = (html) => {
 };
 
 const replaceInlineCSS = (html, newCSS) => {
-    return html.replace(/<style[^>]*>[\s\S]*?<\/style>/, `<style>\n${newCSS.trim()}\n</style>`);
+    return html.replace(
+        /<style[^>]*>[\s\S]*?<\/style>/,
+        `<style>\n${newCSS.trim()}\n</style>`,
+    );
 };
 
 const processHTMLFile = async (filepath) => {
@@ -24,9 +25,22 @@ const processHTMLFile = async (filepath) => {
     }
 
     const purgeCSSResult = await new PurgeCSS().purge({
-        content: [{ raw: replaceInlineCSS(htmlContent, "<style></style>"), extension: "html" }],
+        content: [
+            {
+                raw: replaceInlineCSS(htmlContent, "<style></style>"),
+                extension: "html",
+            },
+        ],
         css: [{ raw: cssContent }],
-        safelist: ['is-active', 'banner__nav--open', 'banner--float', 'message-box', 'success', 'error', 'fade-out']
+        safelist: [
+            "is-active",
+            "banner__nav--open",
+            "banner--float",
+            "message-box",
+            "success",
+            "error",
+            "fade-out",
+        ],
     });
 
     const cleanedCSS = purgeCSSResult[0].css;
