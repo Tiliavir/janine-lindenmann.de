@@ -1,4 +1,4 @@
-'use strict';
+
 
 /*
  * Computes SHA-256 hashes of all inline <script> blocks in the built site and writes

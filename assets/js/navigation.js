@@ -64,9 +64,10 @@ let prevScroll = window.scrollY || document.documentElement.scrollTop;
 let direction = 0;
 let prevDirection = 0;
 
+// biome-ignore lint/correctness/noUnusedVariables: checkScroll is never attached to a scroll listener - wire it up or remove it
 const checkScroll = () => {
-    let curScroll = window.scrollY || document.documentElement.scrollTop;
-    let bannerHeight = siteBanner.offsetHeight;
+    const curScroll = window.scrollY || document.documentElement.scrollTop;
+    const bannerHeight = siteBanner.offsetHeight;
 
     // identify scroll direction
     direction = curScroll > prevScroll ? "down" : "up";

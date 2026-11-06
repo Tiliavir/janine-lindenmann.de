@@ -1,4 +1,4 @@
-'use strict';
+
 
 import fs from "node:fs/promises";
 import { PurgeCSS } from "purgecss";
