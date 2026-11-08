@@ -19,7 +19,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
-          node-version: 20.x
+          node-version: 24.x
       - name: npm ci
         run: npm ci --ignore-scripts
       - name: Lint
@@ -33,7 +33,7 @@ jobs:
         env:
           DART_SASS_VERSION: '1.108.1'
         run: |
-          curl -fsSL "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" | tar -xz -C "$RUNNER_TEMP"
+          curl --proto "=https" --tlsv1.2 -fsSL "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz" | tar -xz -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/dart-sass" >> "$GITHUB_PATH"
       - name: Build
         run: npm run build
