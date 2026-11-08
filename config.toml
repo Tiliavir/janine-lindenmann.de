@@ -1,7 +1,7 @@
 title = 'Janine Lindenmann | Freie Rednerin'
 baseURL = 'https://www.janine-lindenmann.de'
 copyright = "Copyright © {{year}}"
-languageCode = "de"
+locale = "de"
 defaultContentLanguage = "de"
 
 enableInlineShortcodes = true

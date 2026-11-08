@@ -27,7 +27,7 @@
   <meta name="msapplication-config" content="none">
   <meta name="theme-color" content="{{ .Site.Params.style.color_primary }}">
 
-  {{- with (.Params.keywords | default .Params.tags | default .Site.Params.keywords) }}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
+  {{- with (.Keywords | default .Params.tags | default .Site.Params.keywords) }}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
   <meta name="author" content="{{ with .Params.authors }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.author }}{{ end }}">
   <meta property="og:title" content="{{ .Title | default .Site.Title }}">
   <meta property="og:description" content="{{ $description }}">
