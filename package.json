@@ -15,7 +15,7 @@
     "ie 11"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@fullhuman/postcss-purgecss": "8.0.0",
     "autoprefixer": "10.6.2",
     "glob-all": "3.3.1",
