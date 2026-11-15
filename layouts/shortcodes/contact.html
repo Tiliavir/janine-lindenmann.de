@@ -1,32 +1,42 @@
-<div class="form-outer">
+<div class="form-outer band band--primary{{ if eq (.Get "headingLevel") "1" }} form-outer--page{{ end }}">
     {{- $level := .Get "headingLevel" | default "2" }}
-    {{ printf "<h%s>Kontaktiert mich</h%s>" $level $level | safeHTML }}
-    {{ with .Inner }}<p>{{ . }}</p>{{ end }}
+    <div class="form-outer__intro fx-up">
+        {{ printf "<h%s>Ich freue mich auf eure Anfrage!</h%s>" $level $level | safeHTML }}
+        <a class="form-outer__whatsapp" href="https://wa.me/4915679604716" target="_blank" rel="noopener">Per WhatsApp schreiben</a>
+    </div>
     <form id="contactForm" class="contact-form">
-        <label for="name">Eure Namen</label>
-        <input type="text" id="name" name="name" maxlength="100" placeholder="Eure Namen" class="accent" autocomplete="name" required>
-
-        <label for="residence">Wohnort</label>
-        <input type="text" id="residence" maxlength="100" name="residence" placeholder="Wohnort" class="accent" autocomplete="address-level2">
-
-        <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="E-Mail" class="accent" autocomplete="email" required>
-
-        <label for="ceremony">Art der Zeremonie</label>
-        <select id="ceremony" name="ceremony" class="accent" required>
-            <option value="" disabled selected hidden>Art der Zeremonie</option>
-            <option value="freie-trauung">Freie Trauung</option>
-            <option value="kinderwillkommensfest">Kinderwillkommensfest</option>
-        </select>
-
-        <label for="date">Datum der Zeremonie</label>
-        <input type="date" id="date" name="date" class="accent" title="Datum der Zeremonie">
-
-        <label for="location">Ort der Zeremonie</label>
-        <input type="text" id="location"  maxlength="100" name="location" placeholder="Ort der Zeremonie" class="accent">
-
-        <label for="message">Eure Nachricht an mich</label>
-        <textarea maxlength="2000" id="message" name="message" placeholder="Eure Nachricht an mich" class="accent" required></textarea>
+        <div class="contact-form__field">
+            <label for="name">Eure Namen</label>
+            <input type="text" id="name" name="name" maxlength="100" class="accent" autocomplete="name" required>
+        </div>
+        <div class="contact-form__field">
+            <label for="residence">Wohnort</label>
+            <input type="text" id="residence" maxlength="100" name="residence" class="accent" autocomplete="address-level2">
+        </div>
+        <div class="contact-form__field">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" class="accent" autocomplete="email" required>
+        </div>
+        <div class="contact-form__field">
+            <label for="ceremony">Art der Zeremonie</label>
+            <select id="ceremony" name="ceremony" class="accent" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="freie-trauung">Freie Trauung</option>
+                <option value="kinderwillkommensfest">Kinderwillkommensfest</option>
+            </select>
+        </div>
+        <div class="contact-form__field">
+            <label for="date">Datum der Zeremonie</label>
+            <input type="date" id="date" name="date" class="accent">
+        </div>
+        <div class="contact-form__field">
+            <label for="location">Ort der Zeremonie</label>
+            <input type="text" id="location" maxlength="100" name="location" class="accent">
+        </div>
+        <div class="contact-form__field contact-form__field--wide">
+            <label for="message">Eure Nachricht an mich</label>
+            <textarea maxlength="2000" id="message" name="message" class="accent" required></textarea>
+        </div>
 
         <label for="msg" style="display:none">Website (bitte leer lassen)</label>
         <input maxlength="2000" id="msg" type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
