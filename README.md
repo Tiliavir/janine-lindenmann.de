@@ -35,9 +35,16 @@ To build the release version, use:
   mogrify -strip -auto-orient -resize 2000x2000 *.webp
 ```
 
+## Testimonials
+
+The marquee on the start page (`content/_index.md`) quotes customer reviews.
+Quote **verbatim**: exactly as written, typos and emojis included; mark
+omissions with `[...]`. First names only, no surnames. No links to Google. The animation duration in `assets/scss/marquee.scss` scales
+with the number of quotes (40s per 8 quotes) to keep the scroll speed.
+
 ## Machine-readable metadata
 
-- `layouts/_default/baseof.html` contains the schema.org JSON-LD (`ProfessionalService`), canonical link and Open Graph tags.
+- `layouts/_default/baseof.html` contains the schema.org JSON-LD (`ProfessionalService`), canonical link, `vcs-git` link to this repo and Open Graph tags.
 - `static/llms.txt` is a hand-written summary of the site for LLMs ([llmstxt.org](https://llmstxt.org/)).
   **Update it whenever services, region, process or contact details change.**
 - Pages with `noindex: true` and `sitemap.disable: true` in their front matter (e.g. 401/404) are excluded from the sitemap and search engines.

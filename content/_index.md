@@ -126,12 +126,15 @@ Gerne über das nachfolgende Formular oder einfach <a href="https://wa.me/491567
 
 <div class="marquee-container">
     <div class="marquee-content">
-        <div class="customer-quote"><a href="https://maps.app.goo.gl/coULcGCMJ6Mk5TsF9" target="_blank" rel="noopener">&quot;Janines Traurede war witzig, kurzweilig und voller Emotionen.<br>Sie ist eine Rednerin, die Ruhe und Souveränität ausstrahlt.&quot; – Anna Gasteier</a></div>
-        <div class="customer-quote"><a href="https://maps.app.goo.gl/mX5aHDeK2XGHdLKs7" target="_blank" rel="noopener">&quot;Ich fühlte in jeder Sekunde die Leidenschaft, mit der Janine diesen feierlichen Anlass durchgeführt hat. Ihre Rede hat nicht nur das Brautpaar, sondern auch uns Gäste zutiefst berührt und inspiriert.&quot; – Lisa Doms</a></div>
-        <div class="customer-quote">&quot;Janine überzeugt als Rednerin, die mit Klarheit und tiefem Verständnis Menschen erfasst und sie in ihren Zeremonien in den Mittelpunkt stellt.&quot; – Martin Lieske, Tobias Broek</div>
-        <div class="customer-quote"><a href="https://maps.app.goo.gl/kXzSqU54Jot42jWZ7" target="_blank" rel="noopener">&quot;Nicht nur wir, sondern auch unsere Gäste waren begeistert von Janines Rede und ihrer Art. Wir empfehlen sie von Herzen weiter [...]&quot; – Gina und Patrick</a></div>
-        <div class="customer-quote"><a href="https://maps.app.goo.gl/cHAnLf78EvfNBPdf8" target="_blank" rel="noopener">&quot;Die Trauung hat sowohl uns als auch unseren Gästen außerordentlich gut gefallen. Wir haben uns als Paar jederzeit gut aufgehoben gefühlt.&quot; – Jenny und Jan</a></div>
-        <div class="customer-quote"><a href="https://maps.app.goo.gl/whhRFxvFM8443HHv9" target="_blank" rel="noopener">&quot;Ihre Reden sind geprägt von einer Lebendigkeit und Emotionalität, die tief berührt, zum Lachen bringt und Gänsehautmomente schafft.&quot; – Alina Reinhard</a></div>
+        <div class="customer-quote">&quot;Selbst den unerwarteten Vogelschiss während der Trauung hat sie mit absolutem Humor rübergebracht - ein ewiges Andenken durch den Vogel ist jetzt auch dabei!! 🐥&quot; – Elena, Hochzeitsplanerin (Adore Weddings)</div>
+        <div class="customer-quote">&quot;Ihre Rede war persönlich, emotional, einfühlsam und gleichzeitig humorvoll. Sie hat genau die richtige Balance zwischen berührenden Momenten und Leichtigkeit gefunden und unsere Geschichte auf eine ganz besondere und unvergessliche Weise erzählt.&quot; – Leonie</div>
+        <div class="customer-quote">&quot;Du hast uns einen unvergesslichen Moment beschert und nicht nur uns, sondern auch unsere Gäste tief berührt!&quot; – Julia und Michael</div>
+        <div class="customer-quote">&quot;Die Traurede war wunderschön, emotional und gleichzeitig richtig humorvoll – genau die Mischung, die wir uns gewünscht haben.&quot; – Laura und Georg</div>
+        <div class="customer-quote">&quot;Sehr zu empfehlen, tiefgründig, emotional und bewegend.&quot; – Stefan</div>
+        <div class="customer-quote">&quot;Janine überzeugt als Rednerin, die mit Klarheit und tiefem Verständnis Menschen erfasst und sie in ihren Zeremonien in den Mittelpunkt stellt.&quot; – Martin und Tobias</div>
+        <div class="customer-quote">&quot;Nicht nur wir, sondern auch unsere Gäste waren begeistert von Janines Rede und ihrer Art. Wir empfehlen sie von Herzen weiter [...]&quot; – Gina und Patrick</div>
+        <div class="customer-quote">&quot;Die Trauung hat sowohl uns als auch unseren Gästen außerordentlich gut gefallen. Wir haben uns als Paar jederzeit gut aufgehoben gefühlt.&quot; – Jenny und Jan</div>
+        <div class="customer-quote">&quot;Ihre Reden sind geprägt von einer Lebendigkeit und Emotionalität, die tief berührt, zum Lachen bringt und Gänsehautmomente schafft.&quot; – Alina</div>
         <div class="customer-quote">&quot;Wir können immer noch nicht in Worte fassen, wie schön deine Trauung war. Auch jeder Gast war absolut begeistert. Du hast alle zum weinen, aber auch zum lachen gebracht. Daher noch einmal ein riesen großer Dank an dich!&quot; – Franziska &amp; David</div>
         <div class="customer-quote">&quot;Es fühlte sich an, als würde sie unsere Familie schon seit Jahren kennen. Sie hat unsere Geschichte so persönlich, liebevoll und authentisch erzählt, dass viele emotionale Momente entstanden sind.&quot; – Familie K.</div>
     </div>

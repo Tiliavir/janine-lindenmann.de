@@ -14,6 +14,7 @@
   {{ hugo.Generator }}
   <meta name="robots" content="{{ if .Params.noindex }}noindex, follow{{ else }}index, follow{{ end }}">
   <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="vcs-git" href="https://github.com/Tiliavir/janine-lindenmann.de.git" title="Quellcode auf GitHub">
 
   {{ partialCached "site/styles.html" . }}
 
