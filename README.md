@@ -39,7 +39,8 @@ To build the release version, use:
 
 The swipeable testimonials row on the start page is rendered by the `testimonials` shortcode
 from `data/testimonials.yaml`. Quote **verbatim**: exactly as written, typos and emojis included;
-mark omissions with `[...]`. First names only, no surnames. No links to Google.
+mark omissions with `[...]`. First names only, no surnames. No links to Google on the page:
+the optional `url` (Google review) is kept in the data for reference and is not rendered.
 
 ## Scroll effects
 
