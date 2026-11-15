@@ -4,32 +4,15 @@
  * or with reduced motion everything is simply shown.
  */
 .js-fx {
-  .fx-up,
-  .fx-left,
-  .fx-right {
+  .fx-up {
     transition:
       opacity 0.8s ease-out,
       transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
-  .fx-left,
-  .fx-right {
-    transform-origin: 50% 100%;
-  }
-
   .fx-up:not(.is-visible) {
     opacity: 0;
     transform: translateY(2.5rem);
-  }
-
-  .fx-left:not(.is-visible) {
-    opacity: 0;
-    transform: translateX(-60%) rotate(-12deg);
-  }
-
-  .fx-right:not(.is-visible) {
-    opacity: 0;
-    transform: translateX(60%) rotate(12deg);
   }
 
   /* flower next to the portrait on the start page */
@@ -42,5 +25,67 @@
   .profile-picture:not(.is-visible)::before {
     opacity: 0;
     transform: rotate(-25deg) scale(0.8);
+  }
+}
+
+/*
+ * Ceremony tiles fly in from the sides along an arc, scrubbed by the scroll
+ * position: they move only while scrolling and stop when scrolling stops.
+ * Fast at first, slow at the end; they swing around their lower outer corner,
+ * so the top travels further than the bottom. Finished when about half in view.
+ * Browsers without scroll-driven animations show the tiles statically.
+ */
+@keyframes fly-x-left {
+  from {
+    translate: -115vw 0;
+  }
+}
+
+@keyframes fly-x-right {
+  from {
+    translate: 115vw 0;
+  }
+}
+
+@keyframes fly-rise {
+  from {
+    transform: translateY(35vh);
+  }
+}
+
+@keyframes fly-swing-left {
+  from {
+    rotate: -35deg;
+    opacity: 0.2;
+  }
+}
+
+@keyframes fly-swing-right {
+  from {
+    rotate: 35deg;
+    opacity: 0.2;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fly-left,
+    .fly-right {
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+
+    .fly-left {
+      transform-origin: 0 100%;
+      animation-name: fly-x-left, fly-rise, fly-swing-left;
+      animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1), ease-in, ease-out;
+    }
+
+    .fly-right {
+      transform-origin: 100% 100%;
+      animation-name: fly-x-right, fly-rise, fly-swing-right;
+      animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1), ease-in, ease-out;
+    }
   }
 }

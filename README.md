@@ -44,10 +44,15 @@ the optional `url` (Google review) is kept in the data for reference and is not 
 
 ## Scroll effects
 
-Elements with `fx-up`, `fx-left` or `fx-right` fade in once when they scroll into view
-(`assets/js/scroll-effects.js` + `assets/scss/utility/_scroll-effects.scss`). Without JavaScript or
-with reduced motion everything is shown right away. `js-fx` and `is-visible` are added by script and
-therefore safelisted in `purgecss.mjs`.
+All in `assets/scss/utility/_scroll-effects.scss`:
+
+- `fx-up` fades in once when it scrolls into view (`assets/js/scroll-effects.js`; `js-fx` and
+  `is-visible` are added by script and therefore safelisted in `purgecss.mjs`).
+- `fly-left` / `fly-right` (ceremony tiles) fly in along an arc, scrubbed by the scroll position
+  (CSS scroll-driven animations; the HTML validator does not know these properties yet, so
+  `postbuild` filters them). Browsers without support show the tiles statically.
+
+Without JavaScript or with reduced motion everything is shown right away.
 
 ## Machine-readable metadata
 

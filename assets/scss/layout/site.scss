@@ -20,6 +20,8 @@ body {
         flex-grow: 1;
         background-color: transparent;
         overflow-x: hidden;
+        /* clip (unlike hidden) does not create a scroll container, which scroll-driven animations need */
+        overflow-x: clip;
 
         @include break(54rem) {
             overflow-x: initial;

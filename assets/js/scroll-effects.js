@@ -2,9 +2,7 @@
 /* Entrance effects: reveal .fx-* elements once they scroll  */
 /* into view (see assets/scss/utility/_scroll-effects.scss)  */
 /* --------------------------------------------------------- */
-const fxTargets = document.querySelectorAll(
-    ".fx-up, .fx-left, .fx-right, .profile-picture",
-);
+const fxTargets = document.querySelectorAll(".fx-up, .profile-picture");
 
 if (
     fxTargets.length > 0 &&
