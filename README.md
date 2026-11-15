@@ -38,8 +38,8 @@ To build the release version, use:
 ## Testimonials
 
 The marquee on the start page (`content/_index.md`) quotes customer reviews.
-Quote **verbatim**: whole sentences exactly as written, typos and emojis
-included, no `[...]` cuts. No links to Google. The animation duration in `assets/scss/marquee.scss` scales
+Quote **verbatim**: exactly as written, typos and emojis included; mark
+omissions with `[...]`. First names only, no surnames. No links to Google. The animation duration in `assets/scss/marquee.scss` scales
 with the number of quotes (40s per 8 quotes) to keep the scroll speed.
 
 ## Machine-readable metadata
