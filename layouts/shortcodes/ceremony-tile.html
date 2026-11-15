@@ -1,0 +1,12 @@
+{{- /* Teaser tile for a ceremony page.
+       Params: page, image (resource of that page), variant (wedding|welcome-child), title (may contain &shy;), effect (left|right); inner = teaser text */ -}}
+{{- $page := site.GetPage (.Get "page") -}}
+{{- $image := ($page.Resources.GetMatch (.Get "image")).Resize "800x webp q80" -}}
+<a class="ceremony-tile ceremony-tile--{{ .Get "variant" }} fx-{{ .Get "effect" | default "up" }}" href="{{ $page.RelPermalink }}">
+    <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="" loading="lazy" decoding="async">
+    <div class="ceremony-tile__body">
+        <h2 class="ceremony-tile__title">{{ .Get "title" | safeHTML }}</h2>
+        <p class="ceremony-tile__text">{{ .Inner | strings.TrimSpace }}</p>
+        <span class="ceremony-tile__more">Mehr erfahren →</span>
+    </div>
+</a>

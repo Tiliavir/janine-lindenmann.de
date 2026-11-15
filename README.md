@@ -37,10 +37,16 @@ To build the release version, use:
 
 ## Testimonials
 
-The marquee on the start page (`content/_index.md`) quotes customer reviews.
-Quote **verbatim**: exactly as written, typos and emojis included; mark
-omissions with `[...]`. First names only, no surnames. No links to Google. The animation duration in `assets/scss/marquee.scss` scales
-with the number of quotes (40s per 8 quotes) to keep the scroll speed.
+The swipeable testimonials row on the start page is rendered by the `testimonials` shortcode
+from `data/testimonials.yaml`. Quote **verbatim**: exactly as written, typos and emojis included;
+mark omissions with `[...]`. First names only, no surnames. No links to Google.
+
+## Scroll effects
+
+`assets/scss/utility/_scroll-effects.scss` provides CSS-only, scroll-driven entrance effects
+(`fx-up`, `fx-left`, `fx-right`). Browsers without scroll-driven animations and visitors who prefer
+reduced motion see the content without animation. The HTML validator does not know these
+properties yet, so `postbuild` filters them.
 
 ## Machine-readable metadata
 

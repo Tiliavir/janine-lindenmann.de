@@ -1,5 +1,5 @@
-<details>
-    <summary><h2>{{ .Get "title" }}</h2></summary>
+<details class="fx-up"{{ if eq (.Get "open") "true" }} open{{ end }}>
+    <summary><h2>{{ .Get "title" | safeHTML }}</h2></summary>
     <div>
         {{ .Inner | markdownify }}
     </div>

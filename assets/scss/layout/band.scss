@@ -1,0 +1,50 @@
+/* Full-width coloured section inside the page container. */
+.band {
+  position: relative;
+  z-index: 0;
+  padding: 3rem 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    background-color: var(--band-background);
+    z-index: -1;
+  }
+
+  &--canvas {
+    --band-background: var(--color-canvas);
+  }
+
+  /* consecutive bands of the same colour read as one section */
+  &--canvas + &--canvas {
+    padding-top: 0;
+  }
+
+  &--primary {
+    --band-background: var(--color-primary);
+    color: var(--color-canvas-tint);
+  }
+
+  /* pulls the band up so its first element overlaps the image above it */
+  &--overlap {
+    margin-top: -6rem;
+    padding-top: 0;
+
+    &::before {
+      top: 6rem;
+    }
+
+    @media screen and (max-width: 50rem) {
+      margin-top: -3.5rem;
+
+      &::before {
+        top: 3.5rem;
+      }
+    }
+  }
+}

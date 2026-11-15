@@ -2,7 +2,9 @@
 <article class="card card--page{{ if not .Params.feature }} card--coverless{{ end }}">
     <div class="card__content">
         {{ if not (default false .Params.hideTitle) }}
-          <h1 class="card__title">{{ .Title }}</h1>
+          <div class="band band--canvas page-title">
+            <h1 class="card__title">{{ .Title }}</h1>
+          </div>
         {{ end }}
         {{ partialCached "function/content" . .Page }}
     </div>
