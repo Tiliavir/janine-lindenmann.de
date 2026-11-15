@@ -37,7 +37,7 @@ To build the release version, use:
 
 ## Machine-readable metadata
 
-- `layouts/_default/baseof.html` contains the schema.org JSON-LD (`ProfessionalService`), canonical link and Open Graph tags.
+- `layouts/_default/baseof.html` contains the schema.org JSON-LD (`ProfessionalService`), canonical link, `vcs-git` link to this repo and Open Graph tags.
 - `static/llms.txt` is a hand-written summary of the site for LLMs ([llmstxt.org](https://llmstxt.org/)).
   **Update it whenever services, region, process or contact details change.**
 - Pages with `noindex: true` and `sitemap.disable: true` in their front matter (e.g. 401/404) are excluded from the sitemap and search engines.
