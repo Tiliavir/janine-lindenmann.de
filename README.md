@@ -35,6 +35,14 @@ To build the release version, use:
   mogrify -strip -auto-orient -resize 2000x2000 *.webp
 ```
 
+## Testimonials
+
+The marquee on the start page (`content/_index.md`) quotes customer reviews.
+Quote **verbatim**: whole sentences exactly as written, typos and emojis
+included, no `[...]` cuts. Link each quote to its Google review (share link)
+when there is one. The animation duration in `assets/scss/marquee.scss` scales
+with the number of quotes (40s per 8 quotes) to keep the scroll speed.
+
 ## Machine-readable metadata
 
 - `layouts/_default/baseof.html` contains the schema.org JSON-LD (`ProfessionalService`), canonical link, `vcs-git` link to this repo and Open Graph tags.
