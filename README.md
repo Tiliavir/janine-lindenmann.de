@@ -44,10 +44,10 @@ the optional `url` (Google review) is kept in the data for reference and is not 
 
 ## Scroll effects
 
-`assets/scss/utility/_scroll-effects.scss` provides CSS-only, scroll-driven entrance effects
-(`fx-up`, `fx-left`, `fx-right`). Browsers without scroll-driven animations and visitors who prefer
-reduced motion see the content without animation. The HTML validator does not know these
-properties yet, so `postbuild` filters them.
+Elements with `fx-up`, `fx-left` or `fx-right` fade in once when they scroll into view
+(`assets/js/scroll-effects.js` + `assets/scss/utility/_scroll-effects.scss`). Without JavaScript or
+with reduced motion everything is shown right away. `js-fx` and `is-visible` are added by script and
+therefore safelisted in `purgecss.mjs`.
 
 ## Machine-readable metadata
 

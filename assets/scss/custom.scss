@@ -199,18 +199,6 @@ img {
     mask-position: center;
     z-index: 1;
   }
-
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      view-timeline-name: --profile-picture;
-
-      &::before {
-        animation: fx-spin linear both;
-        animation-timeline: --profile-picture;
-        animation-range: entry 0% cover 40%;
-      }
-    }
-  }
 }
 
 /* "Möglicher Ablauf": numbered steps */

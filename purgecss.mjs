@@ -40,6 +40,8 @@ const processHTMLFile = async (filepath) => {
             "success",
             "error",
             "is-leaving",
+            "js-fx",
+            "is-visible",
         ],
     });
 
