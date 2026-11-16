@@ -29,40 +29,22 @@
 }
 
 /*
- * Ceremony tiles fly in from the sides along an arc, scrubbed by the scroll
- * position: they move only while scrolling and stop when scrolling stops.
- * Fast at first, slow at the end; they swing around their lower outer corner,
- * so the top travels further than the bottom. Finished when about half in view.
+ * Ceremony tiles fly in straight from the sides (purely horizontal, no
+ * rotation), scrubbed by the scroll position: they move only while scrolling
+ * and stop when scrolling stops. Fast at first, slow at the end. Finished when
+ * about half in view.
  * Browsers without scroll-driven animations show the tiles statically.
  */
-@keyframes fly-x-left {
+@keyframes fly-left {
   from {
     translate: -115vw 0;
-  }
-}
-
-@keyframes fly-x-right {
-  from {
-    translate: 115vw 0;
-  }
-}
-
-@keyframes fly-rise {
-  from {
-    transform: translateY(8vh);
-  }
-}
-
-@keyframes fly-swing-left {
-  from {
-    rotate: -12deg;
     opacity: 0.2;
   }
 }
 
-@keyframes fly-swing-right {
+@keyframes fly-right {
   from {
-    rotate: 12deg;
+    translate: 115vw 0;
     opacity: 0.2;
   }
 }
@@ -74,18 +56,15 @@
       animation-fill-mode: both;
       animation-timeline: view();
       animation-range: entry 0% cover 50%;
+      animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1);
     }
 
     .fly-left {
-      transform-origin: 0 100%;
-      animation-name: fly-x-left, fly-rise, fly-swing-left;
-      animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1), ease-in, ease-out;
+      animation-name: fly-left;
     }
 
     .fly-right {
-      transform-origin: 100% 100%;
-      animation-name: fly-x-right, fly-rise, fly-swing-right;
-      animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1), ease-in, ease-out;
+      animation-name: fly-right;
     }
   }
 }
