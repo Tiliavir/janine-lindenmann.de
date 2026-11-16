@@ -42,20 +42,6 @@
     width: 100%
   }
 
-  #footer-main-nav.banner__nav {
-    ul > li {
-      padding: 0.5rem 1.5vw;
-
-      @media screen and (max-width: 500px) {
-        padding: 0.5rem 1vw;
-        font-size: tools.typeScale(2, "down");
-      }
-      @media screen and (min-width: calc(50rem + 1px)) {
-        padding: 0.5rem 2.5vw;
-      }
-    }
-  }
-
   .banner__nav {
     ul {
       position: relative;

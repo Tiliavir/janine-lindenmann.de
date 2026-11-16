@@ -1,0 +1,22 @@
+<section class="testimonials band band--canvas" aria-labelledby="kundenstimmen">
+    <div class="testimonials__head">
+        <h2 id="kundenstimmen">Kundenstimmen</h2>
+        <div class="testimonials__nav">
+            <button type="button" class="testimonials__button" data-testimonials-step="-1" aria-label="Vorherige Kundenstimmen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="testimonials__button testimonials__button--next" data-testimonials-step="1" aria-label="Nächste Kundenstimmen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+        </div>
+    </div>
+    <div class="testimonials__row" id="testimonials-row">
+        {{- range hugo.Data.testimonials }}
+        <figure class="testimonial">
+            <blockquote>„{{ .text }}“</blockquote>
+            <figcaption>{{ .name }}</figcaption>
+        </figure>
+        {{- end }}
+    </div>
+    <p class="testimonials__hint">Wischen für weitere Stimmen</p>
+</section>

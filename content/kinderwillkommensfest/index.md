@@ -7,14 +7,14 @@ keywords: [ "alternative Taufe", "freie Taufe", "Kiwi", "Willkommenszeremonie", 
 
 {{< image-slider classes="wide-image" isAboveTheFold=true images="welcome-child-1.webp,welcome-child-2.webp,welcome-child-3.webp" alts="Babyhand hält den Finger eines Erwachsenen|Verzierte Kekse in Form von Babybodys, Sternen und Vögeln|Festlich gedeckter Tisch im Garten mit Wimpelketten und Luftballons" >}}
 
-# Kinderwillkommensfest
-
+{{< title-card title="Kinder&shy;willkommens&shy;fest" icon="/img/icons/welcome-child.svg" variant="welcome-child" >}}
 Ein Kinderwillkommensfest ist eine Feier, die zur Begrüßung eines neugeborenen Kindes veranstaltet wird und nach
 individuellen Wünschen gestaltet werden kann, oftmals als weltliche Alternative zur Taufe.
 Gerne mache ich euch einen Vorschlag zu einem möglichen Ablauf. Die finale
 Entscheidung liegt natürlich immer bei euch, denn ihr als Familie steht an diesem Tag im Mittelpunkt.
+{{< /title-card >}}
 
-{{< collapsible title="Das zeichnet mich als Rednerin für Kinderwillkommensfeste aus" >}}
+{{< collapsible title="Das zeichnet mich als Rednerin für Kinder&shy;willkommens&shy;feste aus" open="true" >}}
 Ihr sollt euch an diesem besonderen Tag ganz und gar auf euch und euer Kind konzentrieren können, weshalb ich die
 Leitung der gesamten Zeremonie übernehme.
 

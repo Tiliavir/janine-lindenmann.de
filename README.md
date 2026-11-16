@@ -37,10 +37,22 @@ To build the release version, use:
 
 ## Testimonials
 
-The marquee on the start page (`content/_index.md`) quotes customer reviews.
-Quote **verbatim**: exactly as written, typos and emojis included; mark
-omissions with `[...]`. First names only, no surnames. No links to Google. The animation duration in `assets/scss/marquee.scss` scales
-with the number of quotes (40s per 8 quotes) to keep the scroll speed.
+The swipeable testimonials row on the start page is rendered by the `testimonials` shortcode
+from `data/testimonials.yaml`. Quote **verbatim**: exactly as written, typos and emojis included;
+mark omissions with `[...]`. First names only, no surnames. No links to Google on the page:
+the optional `url` (Google review) is kept in the data for reference and is not rendered.
+
+## Scroll effects
+
+All in `assets/scss/utility/_scroll-effects.scss`:
+
+- `fx-up` fades in once when it scrolls into view (`assets/js/scroll-effects.js`; `js-fx` and
+  `is-visible` are added by script and therefore safelisted in `purgecss.mjs`).
+- `fly-left` / `fly-right` (ceremony tiles) fly in along an arc, scrubbed by the scroll position
+  (CSS scroll-driven animations; the HTML validator does not know these properties yet, so
+  `postbuild` filters them). Browsers without support show the tiles statically.
+
+Without JavaScript or with reduced motion everything is shown right away.
 
 ## Machine-readable metadata
 

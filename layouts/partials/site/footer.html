@@ -1,25 +1,5 @@
 <footer id="site-footer" class="footer">
   <img class="footer-brand" src="/img/icons/brand.svg" alt="JL – Janine Lindenmann, Freie Rednerin">
-  <nav id="footer-main-nav" class="banner__nav" aria-label="Seitennavigation">
-    <ul>
-      {{- $currentURL := .RelPermalink }}
-      {{- range .Site.Menus.main }}
-        {{- if not .HasChildren }}
-          {{- $active := eq $currentURL .URL }}
-          <li{{ if $active }} class="is-active"{{ end }}>
-            <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
-          </li>
-        {{- else }}
-          {{- range .Children }}
-            {{- $active := eq $currentURL .URL }}
-            <li{{ if $active }} class="is-active"{{ end }}>
-              <a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | safeHTML }}</a>
-            </li>
-          {{- end }}
-        {{- end }}
-      {{- end }}
-    </ul>
-  </nav>
   <p class="social-media">
     <a href="https://www.instagram.com/freie_rednerin_janine" target="_blank" rel="noopener me">
       <img src="/img/icons/instagram.svg" alt="Instagram (öffnet in neuem Tab)">

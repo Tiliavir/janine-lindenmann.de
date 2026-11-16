@@ -1,0 +1,17 @@
+{{- /* Card with the page heading that overlaps the image above it.
+       Params: title (may contain &shy;), tagline, icon (path), variant (wedding|welcome-child); inner = intro (markdown) */ -}}
+{{- $level := .Get "headingLevel" | default "1" -}}
+<div class="band band--canvas band--overlap">
+    <div class="title-card">
+        {{- with .Get "icon" }}
+        <span class="circle {{ $.Get "variant" }}"><img src="{{ . }}" alt=""></span>
+        {{- end }}
+        {{ printf "<h%s class=\"title-card__title\">%s</h%s>" $level (.Get "title") $level | safeHTML }}
+        {{- with .Get "tagline" }}
+        <p class="title-card__tagline">{{ . }}</p>
+        {{- end }}
+        {{- with .Inner }}
+        <div class="title-card__intro fx-up">{{ . | markdownify }}</div>
+        {{- end }}
+    </div>
+</div>

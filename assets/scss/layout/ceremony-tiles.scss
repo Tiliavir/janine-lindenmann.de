@@ -1,0 +1,73 @@
+.ceremony-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 2rem;
+
+  @media screen and (max-width: 50rem) {
+    gap: 1.25rem;
+  }
+}
+
+.ceremony-tile {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--color-text);
+  text-decoration: none;
+  background-color: var(--color-canvas-tint);
+  background-image: none;
+  border-radius: var(--border-radius-large);
+
+  img {
+    width: 100%;
+    height: 17.5rem;
+    max-height: none;
+    margin: 0;
+    object-fit: cover;
+
+    @media screen and (max-width: 50rem) {
+      height: 12.5rem;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.75rem;
+    border-top: 8px solid var(--tile-color);
+
+    @media screen and (max-width: 50rem) {
+      padding: 1.25rem;
+      border-top-width: 6px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+    hyphens: manual;
+  }
+
+  &__text {
+    flex-grow: 1;
+    margin: 0 0 1rem;
+  }
+
+  &__more {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  &:hover &__more {
+    text-decoration: underline;
+  }
+
+  &--wedding {
+    --tile-color: var(--color-wedding);
+  }
+
+  &--welcome-child {
+    --tile-color: var(--color-welcome-child);
+  }
+}

@@ -7,13 +7,13 @@ keywords: [ "freie Trauung", "Freie Rednerin", "Traurednerin", "Hochzeit", "Schw
 
 {{< image-slider classes="wide-image" isAboveTheFold=true images="wedding-1.webp,wedding-2.webp,wedding-3.webp,wedding-4.webp" alts="Weiße Stühle mit Blumenschmuck bei einer Trauung im Freien|Brautpaar hält sich an den Händen|Mit Blumen geschmückter Traubogen und Stuhlreihen auf einer Wiese mit Hügellandschaft|Brautpaar sitzt lachend auf einer Bank unter einer Trauerweide" >}}
 
-# Freie Trauung
-
+{{< title-card title="Freie Trauung" icon="/img/icons/wedding.svg" variant="wedding" >}}
 Eine freie Trauung bietet euch die Möglichkeit, ganz frei zu entscheiden, wie ihr euch euer Eheversprechen geben möchtet.
 Gerne mache ich euch einen Vorschlag zu einem möglichen Ablauf. Die finale
 Entscheidung liegt natürlich immer bei euch, denn ihr steht an diesem Tag im Mittelpunkt.
+{{< /title-card >}}
 
-{{< collapsible title="Das zeichnet mich als Traurednerin aus" >}}
+{{< collapsible title="Das zeichnet mich als Traurednerin aus" open="true" >}}
 Mit viel Wertschätzung stelle ich euch, eure Liebe und eure Persönlichkeit in den Mittelpunkt eurer Zeremonie. Es ist
 euer Moment und meine Worte unterstreichen diesen mit Klarheit und Tiefgang.
 Ich möchte euch mit meinen Worten ein Geschenk überreichen, das so besonders und individuell ist, dass ich es nur euch

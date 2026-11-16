@@ -6,65 +6,31 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
 
 {{< image-slider classes="wide-image" isAboveTheFold=true images="banner-1.webp,banner-2.webp" alts="Janine Lindenmann lächelnd mit Mikrofon|Janine Lindenmann hält eine Traurede vor einem Brautpaar und seinen Gästen unter freiem Himmel" >}}
 
-<div class="center">
-  <h1>Euer Moment – meine Worte</h1>
-  <p class="accent">Klar. Tiefgründig. Ergreifend.</p>
-</div>
+{{< title-card title="Euer Moment – meine Worte" tagline="Klar. Tiefgründig. Ergreifend." >}}{{< /title-card >}}
 
-<div class="side-by-side">
-    <div class="split-70 mobile-50">
-        <h2>Eure Freie Rednerin für die Region Südschwarzwald, Kaiserstuhl, Hochrhein und die Deutschschweiz – oder wo auch immer ihr seid.</h2>
-        <p>In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die nachhaltig im Herzen wirken.</p>
-    </div>
-    <div class="split-30 mobile-50">
-        <div class="profile-picture">
-            <img src="janine.webp" alt="Janine Lindenmann">
+<div class="band band--canvas">
+    <div class="side-by-side intro">
+        <div class="split-70 mobile-50 fx-up">
+            <h2>Eure Freie Rednerin für die Region Südschwarzwald, Kaiserstuhl, Hochrhein und die Deutschschweiz – oder wo auch immer ihr seid.</h2>
+            <p>In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die nachhaltig im Herzen wirken.</p>
         </div>
-    </div>
-</div>
-
-<div class="ceremonies">
-    <div class="side-by-side ceremony">
-        <div class="split-20">
-            <a href="{{< ref "freie-trauung.md" >}}">
-                <span class="circle wedding">
-                    <img src="/img/icons/wedding.svg" alt="Freie Trauung">
-                </span>
-            </a>
-        </div>
-        <div class="split-80">
-            <h2>Freie Trauung</h2>
-            <p>
-                Wünscht ihr euch eine freie Trauung, die eure Liebe authentisch und persönlich feiert? Ich rücke eure Liebe in
-                den Fokus und kreiere ein unvergessliches, emotionales Erlebnis, das alle berührt.
-            </p>
-        </div>
-    </div>
-    <div class="side-by-side ceremony">
-        <div class="split-20">
-            <a href="{{< ref "kinderwillkommensfest.md" >}}">
-                <span class="circle welcome-child">
-                    <img src="/img/icons/welcome-child.svg" alt="Kinderwillkommensfest">
-                </span>
-            </a>
-        </div>
-        <div class="split-80">
-            <div>
-                <h2>Kinderwillkommensfest</h2>
-                <br>
-                <p>
-                    Wollt ihr den Beginn eines neuen Lebensabschnitts im Familienkreis feiern? Gemeinsam gestalten wir ein
-                    Kinderwillkommensfest, das durch klare, warme Botschaften und authentische Emotionen begeistert.
-                </p>
+        <div class="split-30 mobile-50">
+            <div class="profile-picture">
+                <img src="janine.webp" alt="Janine Lindenmann">
             </div>
         </div>
     </div>
 </div>
 
-## Unser Weg
+<div class="band band--canvas ceremony-tiles">
+{{< ceremony-tile page="freie-trauung" image="wedding-1.webp" variant="wedding" effect="left" title="Freie Trauung" >}}Eure Liebe im Fokus – authentisch, persönlich und emotional.{{< /ceremony-tile >}}
+{{< ceremony-tile page="kinderwillkommensfest" image="welcome-child-1.webp" variant="welcome-child" effect="right" title="Kinder&shy;willkommens&shy;fest" >}}Ein neuer Lebensabschnitt, gefeiert mit klaren, warmen Botschaften.{{< /ceremony-tile >}}
+</div>
+
+<h2 class="fx-up">Unser Weg</h2>
 
 <div class="procedure">
-    <div class="side-by-side">
+    <div class="side-by-side fx-up">
         <div class="split-20 first">
             <div class="wrapper">
                 <img alt="" src="/img/icons/contact.svg">
@@ -75,7 +41,7 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
             <p>Ihr tretet mit mir in Kontakt, ich schicke euch mein Angebot.</p>
         </div>
     </div>
-    <div class="side-by-side">
+    <div class="side-by-side fx-up">
         <div class="split-20">
             <div class="wrapper">
                 <img alt="" src="/img/icons/chat.svg">
@@ -87,7 +53,7 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
             Distanz nicht zulässt, auch gerne digital.</p>
         </div>
     </div>
-    <div class="side-by-side">
+    <div class="side-by-side fx-up">
         <div class="split-20">
             <div class="wrapper">
                 <img alt="" src="/img/icons/puzzle.svg">
@@ -99,7 +65,7 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
             Puzzleteile zusammen und planen im Detail eure individuelle Zeremonie.</p>
         </div>
     </div>
-    <div class="side-by-side">
+    <div class="side-by-side fx-up">
         <div class="split-20 last">
             <div class="wrapper">
                 <img alt="" src="/img/icons/calendar.svg">
@@ -113,39 +79,6 @@ description: In meinen Zeremonien erwarten euch echte Worte mit Tiefgang, die na
     </div>
 </div>
 
+{{< testimonials >}}
+
 {{< contact >}}
-
-Ich freue mich auf eure Anfrage!
-
-Gerne über das nachfolgende Formular oder einfach <a href="https://wa.me/4915679604716" target="_blank" rel="noopener">per WhatsApp (+49
-156 7960 4716)</a>.
-
-{{< /contact >}}
-
-## Kundenstimmen
-
-<div class="marquee-container">
-    <div class="marquee-content">
-        <div class="customer-quote">&quot;Selbst den unerwarteten Vogelschiss während der Trauung hat sie mit absolutem Humor rübergebracht - ein ewiges Andenken durch den Vogel ist jetzt auch dabei!! 🐥&quot; – Elena, Hochzeitsplanerin (Adore Weddings)</div>
-        <div class="customer-quote">&quot;Ihre Rede war persönlich, emotional, einfühlsam und gleichzeitig humorvoll. Sie hat genau die richtige Balance zwischen berührenden Momenten und Leichtigkeit gefunden und unsere Geschichte auf eine ganz besondere und unvergessliche Weise erzählt.&quot; – Leonie</div>
-        <div class="customer-quote">&quot;Du hast uns einen unvergesslichen Moment beschert und nicht nur uns, sondern auch unsere Gäste tief berührt!&quot; – Julia und Michael</div>
-        <div class="customer-quote">&quot;Die Traurede war wunderschön, emotional und gleichzeitig richtig humorvoll – genau die Mischung, die wir uns gewünscht haben.&quot; – Laura und Georg</div>
-        <div class="customer-quote">&quot;Sehr zu empfehlen, tiefgründig, emotional und bewegend.&quot; – Stefan</div>
-        <div class="customer-quote">&quot;Janine überzeugt als Rednerin, die mit Klarheit und tiefem Verständnis Menschen erfasst und sie in ihren Zeremonien in den Mittelpunkt stellt.&quot; – Martin und Tobias</div>
-        <div class="customer-quote">&quot;Nicht nur wir, sondern auch unsere Gäste waren begeistert von Janines Rede und ihrer Art. Wir empfehlen sie von Herzen weiter [...]&quot; – Gina und Patrick</div>
-        <div class="customer-quote">&quot;Die Trauung hat sowohl uns als auch unseren Gästen außerordentlich gut gefallen. Wir haben uns als Paar jederzeit gut aufgehoben gefühlt.&quot; – Jenny und Jan</div>
-        <div class="customer-quote">&quot;Ihre Reden sind geprägt von einer Lebendigkeit und Emotionalität, die tief berührt, zum Lachen bringt und Gänsehautmomente schafft.&quot; – Alina</div>
-        <div class="customer-quote">&quot;Wir können immer noch nicht in Worte fassen, wie schön deine Trauung war. Auch jeder Gast war absolut begeistert. Du hast alle zum weinen, aber auch zum lachen gebracht. Daher noch einmal ein riesen großer Dank an dich!&quot; – Franziska &amp; David</div>
-        <div class="customer-quote">&quot;Es fühlte sich an, als würde sie unsere Familie schon seit Jahren kennen. Sie hat unsere Geschichte so persönlich, liebevoll und authentisch erzählt, dass viele emotionale Momente entstanden sind.&quot; – Familie K.</div>
-    </div>
-</div>
-
-<script>
-// duplicate the quotes for a seamless loop; the copy is hidden from screen readers and keyboard users
-(function () {
-    const clone = document.querySelector('.marquee-content').cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
-    document.querySelector('.marquee-container').appendChild(clone);
-})();
-</script>
