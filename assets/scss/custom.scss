@@ -236,6 +236,7 @@ img {
 .image-fade-slider {
   display: grid;
   overflow: hidden;
+  isolation: isolate;
 
   &__slide {
     position: relative;
@@ -276,9 +277,11 @@ img {
     object-position: center;
   }
 
-  &.wide-image .is-active .image,
-  &.wide-image .is-leaving .image {
-    animation: image-fade-slider-zoom calc(var(--slider-interval, 7000ms) + 1.5s) linear forwards;
+  @media (prefers-reduced-motion: no-preference) {
+    &.wide-image .is-active .image,
+    &.wide-image .is-leaving .image {
+      animation: image-fade-slider-zoom calc(var(--slider-interval, 7000ms) + 1.5s) linear forwards;
+    }
   }
 
   &.full-image {
@@ -301,12 +304,6 @@ img {
 
   to {
     transform: scale(1.06);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .image-fade-slider .image {
-    animation: none !important;
   }
 }
 
