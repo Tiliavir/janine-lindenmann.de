@@ -15,13 +15,13 @@
     "ie 11"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.6.6",
+    "@biomejs/biome": "2.6.7",
     "@fullhuman/postcss-purgecss": "9.1.0",
     "autoprefixer": "10.6.2",
     "glob-all": "3.3.1",
     "postcss": "8.5.32",
     "postcss-cli": "12.0.0",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "prettier-plugin-go-template": "0.0.15",
     "stylelint": "17.16.0",
     "stylelint-config-recommended-scss": "17.0.1",
