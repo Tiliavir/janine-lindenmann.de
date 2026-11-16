@@ -39,7 +39,7 @@ const processHTMLFile = async (filepath) => {
             "message-box",
             "success",
             "error",
-            "fade-out",
+            "is-leaving",
         ],
     });
 
