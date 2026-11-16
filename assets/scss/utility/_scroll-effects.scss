@@ -49,20 +49,20 @@
 
 @keyframes fly-rise {
   from {
-    transform: translateY(35vh);
+    transform: translateY(8vh);
   }
 }
 
 @keyframes fly-swing-left {
   from {
-    rotate: -35deg;
+    rotate: -12deg;
     opacity: 0.2;
   }
 }
 
 @keyframes fly-swing-right {
   from {
-    rotate: 35deg;
+    rotate: 12deg;
     opacity: 0.2;
   }
 }
