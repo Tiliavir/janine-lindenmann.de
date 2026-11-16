@@ -4,116 +4,54 @@
 {{- $isAboveTheFold := .Get "isAboveTheFold" | default false -}}
 {{- /* alt texts, separated by "|" - one per image, same order as "images" */ -}}
 {{- $alts := split (.Get "alts" | default "") "|" -}}
-
-{{- $imageList := split $images "," -}}
+{{- $withBackdrop := in (split $customClasses " ") "full-image" -}}
 
 {{- $page := .Page -}}
-{{- $smallImages := slice -}}
-{{- $mediumImages := slice -}}
-{{- $largeImages := slice -}}
-{{- $mediumImageElements := slice -}}
-
-{{- range $imageList }}
-    {{- $img := "" -}}
-    {{- if $page.Resources.GetMatch . -}}
-        {{- $img = $page.Resources.GetMatch . -}}
-    {{- else -}}
-        {{- $img = resources.Get . -}}
-    {{- end -}}
-
-    {{- $small := $img.Resize "600x" | fingerprint -}}
-    {{- $medium := $img.Resize "1200x" | fingerprint -}}
-    {{- $original := $img | fingerprint -}}
-
-    {{- $smallImages = $smallImages | append $small.RelPermalink -}}
-    {{- $mediumImages = $mediumImages | append $medium.RelPermalink -}}
-    {{- $largeImages = $largeImages | append $original.RelPermalink -}}
-
-    {{- $mediumImageElements = $mediumImageElements | append $medium -}}
+{{- $slides := slice -}}
+{{- range $i, $name := split $images "," }}
+    {{- $img := $page.Resources.GetMatch $name | default (resources.Get $name) -}}
+    {{- if not $img }}{{ errorf "image-slider: image %q not found (%s)" $name $page.File.Path }}{{ end -}}
+    {{- $slides = $slides | append (dict
+        "small" ($img.Resize "600x" | fingerprint)
+        "medium" ($img.Resize "1200x" | fingerprint)
+        "large" ($img | fingerprint)
+        "alt" (index $alts $i | default "")
+    ) -}}
 {{- end -}}
 
 {{- if $isAboveTheFold -}}
-    <link rel="preload" as="image" href="{{ (index $mediumImageElements 0).RelPermalink }}" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ (index $slides 0).medium.RelPermalink }}" fetchpriority="high">
 {{- end -}}
 
-<div class="image-fade-slider {{ $customClasses }}"
-     data-images='{{ jsonify $mediumImages }}'
-     data-small-images='{{ jsonify $smallImages }}'
-     data-large-images='{{ jsonify $largeImages }}'
-     data-interval='{{ $interval }}'
-     data-alts='{{ jsonify $alts }}'
-     style="background-image:url({{ index $mediumImages 0 }});">
-
-    <picture>
-        <source srcset="{{ index $smallImages 0 }} 600w, {{ index $mediumImages 0 }} 1200w, {{ index $largeImages 0 }} 2000w"
-                sizes="(max-width: 512px) 600px, (max-width: 1024px) 1200px, 2000px"
-                type="image/webp" />
-        <img src="{{ (index $mediumImageElements 0).RelPermalink }}"
-             class="image"
-             alt="{{ with $alts }}{{ index . 0 }}{{ end }}"
-             width="{{ (index $mediumImageElements 0).Width }}"
-             height="{{ (index $mediumImageElements 0).Height }}"
-             loading="{{ cond $isAboveTheFold "eager" "lazy" }}"
-        decoding="{{ cond $isAboveTheFold "sync" "async" }}" />
-    </picture>
+<div class="image-fade-slider {{ $customClasses }}" data-interval="{{ $interval }}" style="--slider-interval: {{ $interval }}ms">
+    {{- range $i, $s := $slides }}
+    {{- if gt $i 0 }}
+    <template class="image-fade-slider__pending">
+    {{- end }}
+    <div class="image-fade-slider__slide{{ if eq $i 0 }} is-active{{ end }}">
+        {{- if $withBackdrop }}
+        <div class="image-fade-slider__backdrop" style="background-image: url({{ $s.small.RelPermalink }})"></div>
+        {{- end }}
+        <picture>
+            <source srcset="{{ $s.small.RelPermalink }} 600w, {{ $s.medium.RelPermalink }} 1200w, {{ $s.large.RelPermalink }} 2000w"
+                    sizes="100vw"
+                    type="image/webp" />
+            <img src="{{ $s.medium.RelPermalink }}"
+                 class="image"
+                 alt="{{ $s.alt }}"
+                 width="{{ $s.medium.Width }}"
+                 height="{{ $s.medium.Height }}"
+                 {{- if and (eq $i 0) $isAboveTheFold }}
+                 decoding="sync" fetchpriority="high"
+                 {{- else if eq $i 0 }}
+                 loading="lazy" decoding="async"
+                 {{- else }}
+                 decoding="async"
+                 {{- end }} />
+        </picture>
+    </div>
+    {{- if gt $i 0 }}
+    </template>
+    {{- end }}
+    {{- end }}
 </div>
-
-<script>
-    (function() {
-        const sliders = document.querySelectorAll('.image-fade-slider');
-
-        sliders.forEach(slider => {
-            const images = JSON.parse(slider.dataset.images);
-            const smallImages = JSON.parse(slider.dataset.smallImages);
-            const largeImages = JSON.parse(slider.dataset.largeImages);
-            const interval = Number.parseInt(slider.dataset.interval, 10) || 5000;
-            const alts = JSON.parse(slider.dataset.alts || '[]');
-            let index = 0;
-
-            const picture = slider.querySelector('picture');
-            const source = picture.querySelector('source');
-            const img = picture.querySelector('img');
-
-            let lastSrc = "";
-            let debounceTimer = null;
-            function syncBackground() {
-                if (img.currentSrc !== lastSrc) {
-                    lastSrc = img.currentSrc;
-                    slider.style.backgroundImage = `url(${img.currentSrc})`;
-                }
-            }
-
-            img.addEventListener("load", () => {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(syncBackground, 100);
-            });
-
-            if (img.complete) {
-                // if image is already loaded (from cache), sync immediately
-                syncBackground();
-            }
-
-            // respect users who asked the OS to reduce motion: show the first image only
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                return;
-            }
-
-            setInterval(() => {
-                index = (index + 1) % images.length;
-
-                if (source && img) {
-                    img.classList.add('fade-out');
-                    setTimeout(() => {
-                        source.setAttribute('srcset', `${smallImages[index]} 600w, ${images[index]} 1200w, ${largeImages[index]} 2000w`);
-                        img.setAttribute('src', smallImages[index]);
-                        img.setAttribute('alt', alts[index] || '');
-                    }, 100);
-
-                    img.onload = () => {
-                        img.classList.remove('fade-out');
-                    };
-                }
-            }, interval);
-        });
-    })();
-</script>
