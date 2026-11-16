@@ -24,7 +24,7 @@
     "prettier": "3.10.1",
     "prettier-plugin-go-template": "0.0.15",
     "stylelint": "17.16.0",
-    "stylelint-config-recommended-scss": "17.0.1",
+    "stylelint-config-recommended-scss": "18.0.0",
     "vnu-jar": "26.11.9"
   },
   "scripts": {
