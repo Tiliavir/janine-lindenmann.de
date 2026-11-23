@@ -17,15 +17,15 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
     "@fullhuman/postcss-purgecss": "9.1.0",
-    "autoprefixer": "10.6.2",
+    "autoprefixer": "10.7.0",
     "glob-all": "3.3.1",
     "postcss": "8.5.33",
     "postcss-cli": "12.0.0",
     "prettier": "3.10.1",
     "prettier-plugin-go-template": "0.0.15",
-    "stylelint": "18.0.0",
+    "stylelint": "18.1.0",
     "stylelint-config-recommended-scss": "18.0.0",
-    "vnu-jar": "26.11.17"
+    "vnu-jar": "26.11.20"
   },
   "scripts": {
     "lint": "stylelint 'assets/scss/**/*.scss' && biome check .",
